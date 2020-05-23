@@ -1,0 +1,84 @@
+\chapter{Results and discussions}
+Following subsections shall discuss in detail, the various conclusions that were inferred by the developers/designers from the present investigation, a brief overview of the methodologies learned, deviations from ideality (if any), safety precautions which were followed and a creator’s roadmap for implementation of a similar project and other moderately or less important details.
+
+
+\section{Basic inferences}
+
+The following list has been divided into two main sublists, namely a set of direct inferences (those inferences which are easily derived by following the normal development roadmap) and a set of indirect inferences (those inferences which need a deeper understanding of the application requirements of the project).
+
+\subsection{Direct inferences}
+
+\subsubsection*{D1 – Large sized assemblies must be supported by suitable base material}
+
+It is obvious from *section 3.1* that the piece of polished wood is optimal for the base material design. The two main reasons to support this claim are 
+
+\begin{itemize}
+    \item Wood as a material, when used with considerable and uniform dimensions forms a good integrating platform on which other \textit{heavy machinery} can be mounted. Heavy machinery here refers to any object of considerable weight and dimensions which easily couples with the wooden material either by means of screw fastening mechanisms or directly integrated into slots made into the material. The bottom line is that both types of component material whether similar or dissimilar to wood, wood forms a natural integrating platform for all.
+    \item Wood is light (has lesser weight in comparison with the sum of weights of other discrete components), sturdy, easy to clean as well as rests easily on a flat surface.
+\end{itemize}
+
+Hence, the choice of the base material.
+
+\subsubsection*{D2 – Usage of buffered dimensions instead of going for exact measurements}
+
+This point has been reiterated through the entire report in various sections of importance. The reasons pertaining to consideration of buffered dimensions is that it always leaves out a tolerance band for error, i.e. even if some form of error creeps in due to improper or faulty machining work of a wide variety of instruments, they can be rectified easily. Although any form of error may lead to material wastage it is still way better than a faulty piece of material which is fundamentally useless and needs a replacement altogether. The downside is that the sum of all buffered dimensions would create a moderate to a large increase in overall dimensions of the entire physical structure/assembly thereby also hampering its overall portability.
+
+\subsubsection*{D3 – Choice of proper adhesive material}
+
+As stated in *section 3.6* a suitable material should be chosen for such purposes. Various types of fast-drying glue may seem to be an intuitively easy option however, they don’t stand the test of time and are not viable in the long run. Therefore, throughout the entire assembly screws have been used for fixing and coupling together components of similar and dissimilar materials.
+
+\subsubsection*{D1 – Optimum power supply}
+
+As stated multiple times in *section 4.1* a single power supply should be sufficient for the entire project. However, designing a dedicated PCB for the purpose would have been simply tedious and time-consuming and hence was omitted for the current iteration of the project. But at the same time this increased density of power lines and cables. Additionally, it should be noted that power supply units are in general bulky and heavy for e.g. adapters, single/dual regulated supplies etc. So it pays off to design a single dedicated circuit for all such powering purposes.
+
+
+\subsection{Indirect inferences}
+
+\subsubsection*{ID1 – Consideration of weight capacity of stepper motors}
+
+This point has not been stated anywhere else in the report, however, a little insight into what all would be coupled with a stepper motor shaft tells us that it will be bearing a considerable amount of heavy loads.The stepper motor assigned for the X-axis segment must be able to rotate a coupled rod, resting on which is the entire Y-axis segment (a part of whose weight is resting on this threaded rod and another smooth support rod). Invariably and indirectly the stepper motor for the X-axis is supporting the weight of both the rods as well as the weight of the complete Y-axis segment. So a large capacity stepper motor needs to be considered.The stepper motor for the Y-axis segment is relatively less constrained in terms of weight capacity and any suitable capacity motor which can rotate a threaded rod will do.
+
+\subsubsection*{ID2 – Stability of the entire structure}
+
+A little thought has been given to this part however while the CNC drill engraves tracks on the PCB, it should be noted that tremendous amounts of vibrations are produced in the system. A sturdy base material does help as stated in 4.1.1 D1 however, additional counterbalance weights at strategic positions is suggested for enhanced stability.
+
+\subsubsection*{ID3 – Engraving and drilling bits}
+
+The review from *section 2.3.4* should be taken into account while discussing engraving and drilling bits. There are two points to be kept in mind while choosing these bits for a CNC machine: the dimensions and the material. The ideal material is Tungsten Carbide although it is expensive. Drills for glass cutting and engraving may not be always suitable for PCB engraving purposes. For understanding what dimensions would be appropriate for the various engraving bits an iterative approach could be taken up. With the \textit{available bits}, the smallest and largest possible wire thicknesses should be engraved. If the output quality is within the acceptable error limits set by the designers then the available set of bits is sufficient for the machine. If it is not, choose finer and harder bits for the same purpose and repeat the above process. Continue until the desired quality of output is obtained. Choose these engraving and drilling bits for your CNC machine.
+
+\section{Safety precautions undertaken}
+
+Throughout the potentially hazardous phase of the machining work, the operators of various machining tools, as well as the designers of the project, took multiple safety precautions. Following is a recommended set of safety precautions that must be followed whenever similar kind of projects is undertaken:
+
+\begin{enumerate}
+    \item Only experts and professional operators who are familiar with the machine should handle it under all circumstances.
+    \item Keep a safe distance from rotating lathes, metal drills while they are in operation at least by 1.5 to 3 ft.
+    \item While large-sized machinery is in operation, maintain a safe distance from its HV power supply.
+    \item For rotating spindles, drill bits, etc. always make it a habit to spray lubricant on which the job is being done.
+    \item Vices, holders, metallic jaws and other such similar equipment always pose a pinching hazard, handle them carefully.
+    \item As a general rule, look up to the safety of yourself and others and be fully aware of your surroundings.
+\end{enumerate}
+
+\section{Standard testing procedures}
+
+\subsection{Unit Testing}
+
+\subsubsection*{Testing of motors}
+\subsubsection*{Testing of the drill head}
+\subsubsection*{Testing of G code generation software}
+\subsubsection*{Testing of CAM processor software along with unit components}
+
+\subsection{Integrated or full testing}
+
+\subsubsection*{ Milling single-sided PCBs}
+\subsubsection*{Testing stability of the entire machine}
+
+
+\section{Experimental procedures}
+
+\subsubsection*{Computing resolution and accuracy}
+\subsubsection*{Computing mean velocities (linear and angular)}
+
+\section{Test case selection}
+
+\section{Scope for future work}

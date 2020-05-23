@@ -1,0 +1,104 @@
+\documentclass[12pt]{report}
+\usepackage[utf8]{inputenc}
+
+\usepackage[backend = biber,style = numeric]{biblatex}
+\addbibresource{references.bib} %references
+
+% \usepackage{natbib}
+\usepackage{titlesec}
+\usepackage{geometry}
+\usepackage{etoolbox}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{amsmath}
+\usepackage{xstring}
+% \usepackage{longtable}
+% \usepackage{booktabs}
+\usepackage{multirow}
+
+
+% On the spot circuit creation %
+\usepackage[american]{circuitikz}
+\usepackage{tikz}
+\usetikzlibrary{graphs}
+
+
+% Image setup %
+\usepackage{graphicx}
+\graphicspath{{./images/}}
+
+% Link setup %
+\usepackage{hyperref}
+\hypersetup{colorlinks=true, linkcolor=black, urlcolor=blue}
+
+
+%% caption layout for tables and images %%
+\usepackage{caption}
+\usepackage{subcaption}
+\captionsetup[table]{skip=7pt}
+\captionsetup[figure]{skip=7pt}
+
+
+%% page layout %%
+\makeatletter
+\patchcmd{\@makechapterhead}{50\p@}{75mm}{}{}
+\patchcmd{\@makeschapterhead}{50\p@}{75mm}{}{}
+\makeatother
+
+\geometry{a4paper,left = 30mm,right = 20mm,top = 15mm,bottom = 22mm}
+\textwidth = 160mm
+\textheight = 245mm
+\footskip = 7mm
+
+
+%% Paragraph and line spacing %%
+\setlength{\parindent}{12mm}
+\setlength{\parskip}{2.5mm}
+% \renewcommand{\baselinestretch}{1.5}
+
+%% title formatting %%          
+\titleformat{\chapter}[block]{\bfseries\Huge\bfshape}{Chapter \ \thechapter}{0.5ex}
+{
+    \rule{\textwidth}{0pt}
+    \vspace{1ex}
+    \centering
+} 
+\titlespacing{\thechapter}{0mm}{12mm}{12mm}
+
+
+%% Section formatting %%
+\titleformat{\section}[hang]{\fontsize{16}{16}\bfseries}{ \thesection}{1.4em}{}
+\titlespacing{\thesection}{}{15mm}{15mm}
+
+%% Subsection formatting %%
+\titleformat{\subsection}[hang]{\fontsize{14}{14}\bfseries}{ \thesubsection}{1.4em}{}
+\titlespacing{\thesubsection}{}{15mm}{15mm}
+
+%% First level ordered list %%
+\setlist[enumerate,1]{label=(\alph*)}
+
+
+\begin{document}
+
+\input{prerequistes}
+\pagenumbering{roman}
+\input{abstract}
+
+\renewcommand*\contentsname{Table of Contents}
+\tableofcontents
+
+\listoffigures
+
+\listoftables
+
+\input{content/Chapter1}
+\input{content/Chapter2}
+\input{content/Chapter3}
+\input{content/Chapter4}
+\input{content/Chapter5}
+\input{content/Chapter6}
+\input{content/Chapter7}
+
+\printbibliography
+
+\end{document}
