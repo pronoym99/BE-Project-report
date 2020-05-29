@@ -171,6 +171,15 @@ After successfully interfacing the motors to the Arduino board via the CNC shiel
 
 Once the motor assemblies have been wired up to the controller via the CNC shield then the entire setup is now ready to be powered up. However, we still need to calibrate the motor drivers for optimal performance which has been explained in the following section.
 
+Following page contains the overall circuit of the CNC machine \pagebreak
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.7]{Chapter_4/electronic_circuit.png}
+    \caption{Complete electronic circuit for the CNC machine with various motors labelled along with their corresponding axes}
+    \label{fig:electronic_circuit}
+\end{figure}
+
 
 \subsection{Motor driver current calibration}
 
@@ -218,7 +227,7 @@ One way to line the current limit is to place the driving force into full-step m
        \end{figure}
 
 
- \item Now the red and black probes of the multimeter are connected to the potentiometer and the ground pin of the motor driver respectively as shown below. \pagebreak
+ \item Now the red and black probes of the multimeter are connected to the potentiometer and the ground pin of the motor driver respectively as shown below. 
 
        \begin{figure}[h]
         \hspace{20mm}
@@ -284,7 +293,7 @@ The four leads of the stepper motor are customary to be coloured distinctively. 
  \caption{Illustration representing the coils of a stepper motor and their equivalent coloured annotation}
  \label{fig:coil_representation}
 
-\end{figure} \pagebreak
+\end{figure} 
 
 The exact terminology for the wires and their connection with the dedicated pins is better represented in the *table*. \par
 
