@@ -1,10 +1,10 @@
 \chapter{Results and discussions}
-Following subsections shall discuss in detail, the various conclusions that were inferred by the developers/designers from the present investigation, a brief overview of the methodologies learned, deviations from ideality (if any), safety precautions which were followed and a creator’s roadmap for implementation of a similar project and other moderately or less important details.
+Following subsections shall discuss in detail, the various conclusions that were inferred by the developers/designers from the present investigation, a brief overview of the methodologies learned, deviations from ideality (if any), safety precautions which were followed and a creator’s road map for implementation of a similar project and other moderately or less important details.
 
 
 \section{Basic inferences}
 
-The following list has been divided into two main sublists, namely a set of direct inferences (those inferences which are easily derived by following the normal development roadmap) and a set of indirect inferences (those inferences which need a deeper understanding of the application requirements of the project).
+The following list has been divided into two main sub-lists, namely a set of direct inferences (those inferences which are easily derived by following the normal development road map) and a set of indirect inferences (those inferences which need a deeper understanding of the application requirements of the project).
 
 \subsection{Direct inferences}
 
@@ -40,7 +40,7 @@ This point has not been stated anywhere else in the report, however, a little in
 
 \subsubsection*{ID2 – Stability of the entire structure}
 
-A little thought has been given to this part however while the CNC drill engraves tracks on the PCB, it should be noted that tremendous amounts of vibrations are produced in the system. A sturdy base material does help as stated in 4.1.1 D1 however, additional counterbalance weights at strategic positions is suggested for enhanced stability.
+A little thought has been given to this part however while the CNC drill engraves tracks on the PCB, it should be noted that tremendous amounts of vibrations are produced in the system. A sturdy base material does help as stated in *4.1.1 D1* however, additional counterbalance weights at strategic positions is suggested for enhanced stability.
 
 \subsubsection*{ID3 – Engraving and drilling bits}
 
@@ -82,3 +82,18 @@ Throughout the potentially hazardous phase of the machining work, the operators 
 \section{Test case selection}
 
 \section{Scope for future work}
+
+Although the project was completed it does leave out on many critical points wherein it could have been improvised. Following are some points which can be looked upon by any designer or developer who would like to further develop the project. These key points are only a few of those areas where primary development should be focused on and doesn’t necessarily include everything where improvisation could be carried out (that is left as an exercise to developers).
+
+\begin{enumerate}
+    \item Develop a proper PSU for the entire system.
+    \item Develop a single PCB containing the entire circuitry to control the system.
+    \item Use a more powerful and dedicated drilling motor for the actual engraving purpose.
+    \item Develop a single integrated software platform for the entire engraving process which facilitates every step from G-code generation to the final PCB output.
+    \item Optimise or develop G-code generation routines which can handle multiple PCBs at the same time without any manual intervention till their net dimensions are within 15 cm x 15 cm.
+    \item Improvise necessary hardware and/or software to handle multi-layered PCBs.
+    \item Improvise necessary hardware and/or software to carry out the special procedures listed in *section 2.3.3* automatically.
+    \item Develop a proper enclosure for the entire CNC machine if possible with cooling and vacuuming systems.
+\end{enumerate}
+
+
