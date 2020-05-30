@@ -26,25 +26,66 @@ In our CNC machine, EAGLE(R) is being used to design the schematic as well as th
  \end{subfigure} 
 \end{center}
 
- \caption{A sample schematic and its corresponding board file used to test the CAM processor wizrd in Eagle software}
+ \caption{A sample schematic and its corresponding board file used to test the CAM processor wizard in Eagle software}
  \label{fig:sample_ckt}
 \end{figure}
 
 
-After checking for any possible faults in the board file regarding traces, routing, clearances etc. the corresponding Gerber files are generated. To do so, the CAM processor icon (which is available only in the board view) is selected and the appropriate layers are selected for generation of the corresponding Gerber files. Now since the concerned CNC is only capable of manufacturing single-sided PCBs, Gerber file of either the top or bottom layers is only generated. Drill files are also pre-generated which should be ignored since the CNC is capable of only engraving the wire tracks and is not capable of drilling any holes with the drilling equipment available to it. The output file paths for the generation of the Gerber files are usually fixed however, they can be changed wherein required. Once the required Gerber file is generated, it concludes the first step of the software process flow. Following are some images from the procedure: \par
+After checking for any possible faults in the board file regarding traces, routing, clearances etc. the corresponding Gerber files are generated. To do so, the CAM processor icon (which is available only in the board view) is selected and the appropriate layers are selected for generation of the corresponding Gerber files. Now since the concerned CNC is only capable of manufacturing single-sided PCBs, Gerber file of either the top or bottom layers is only generated. Drill files are also pre-generated which should be ignored since the CNC is capable of only engraving the wire tracks and is not capable of drilling any holes with the drilling equipment available to it. The output file paths for the generation of the Gerber files are usually fixed however, they can be changed wherein required. Once the required Gerber file is generated, it concludes the first step of the software process flow. Following is the image from the procedure. \pagebreak
 
-% ##insert images of Gerber generation window in cam processor## %
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale = 0.75]{Chapter_5/cam_processor_dialog.png}
+    \caption{A snapshot of the CAM processor dialog box in Eagle}
+    \label{fig:cam_dialog}
+\end{figure}
 
 
 \section{G code generation}
 
 The next step is to generate the g code corresponding to the Gerber file obtained from the previous step. The software process flow moves online at this stage and hence requires internet access. G-code instruction of a PCB board is generated through the online platform \href{http://copper.carbide3d.com/}{Carbide3D} (\url{http://copper.carbide3d.com/}). It is a free (however, not open-source) software for various CNC jobs and has multiple variants of itself for other specialisations such as woodwork, sheet metal engraving, carving, sculpting etc. \par
 
-As soon as the online application is opened, it asks the user to enter the dimensions of the material in either of the desirable units namely mm and inches and also asks the user the concerned job type (i.e whether the top or bottom of the board is supposed to be traced). Followed by this it asks the user to upload the concerned Gerber file. It should be noted that by virtue of using Eagle software, dedicated Gerber files are obtained for each of the layers i.e. a wrong choice of the job type (top or bottom) won’t affect the final job. The user gets to choose the tool bit that is going to be used as well. \par
+As soon as the online application is opened, it asks the user to enter the dimensions of the material in either of the desirable units namely mm and inches and also asks the user the concerned job type (i.e whether the top or bottom of the board is supposed to be traced). Followed by this it asks the user to upload the concerned Gerber file. It should be noted that by virtue of using Eagle software, dedicated Gerber files are obtained for each of the layers i.e. a wrong choice of the job type (top or bottom) won’t affect the final job. The user gets to choose the tool bit that is going to be used as well. \pagebreak
+
+\begin{figure}[h]
+    \begin{subfigure}{0.5\textwidth}
+    \includegraphics[scale = 0.15]{Chapter_5/g_code_1.png}
+    \caption{Choosing the system of units and board dimensions}
+    \label{fig:g1}
+    \end{subfigure}
+    \begin{subfigure}{0.5\textwidth}
+    \includegraphics[scale = 0.15]{Chapter_5/g_code_2.png}
+    \caption{Uploading Gerber file from the previous step}
+    \label{fig:g2}
+    \end{subfigure}
+    \caption{The first two steps for G-code generation}
+    \label{fig:g12}
+\end{figure}
 
 This is followed by asking the specifications regarding the drilling job of the concerned PCB which should be completely ignored. This step is followed by the routing step where again the tool dimensions for engraving purposes will be asked. Designers at this stage can choose to give various dimensional offsets if the need arises or else may choose to skip this step. Also if the boundary cutout for a PCB needs to be made it can be chosen at this stage itself. This step is followed by a relatively minor step of choosing whether to generate an area rub-out or not and any specialized tool to do the same. The following step successfully generates the G-code for the PCB and can be downloaded into the user’s local machine. The software at each stage provides a preview of what is going to be traced out by the final CAM processor. Generating a G-code file for a PCB and saving it to local storage concludes the penultimate step in our software process flow. Following are some snapshots taken from this step of the software process flow. \par
 
-% ##insert step wise images of flow##
+\begin{figure}[h]
+    \begin{subfigure}{0.5\textwidth}
+    \includegraphics[scale = 0.15]{Chapter_5/g_code_3.png}
+    \caption{Routing and offset based settings}
+    \label{fig:g3}
+    \end{subfigure}
+    \begin{subfigure}{0.5\textwidth}
+    \includegraphics[scale = 0.15]{Chapter_5/g_code_4.png}
+    \caption{Options for area rub out and outline cut}
+    \label{fig:g4}
+    \end{subfigure}  
+    \begin{center}
+    \begin{subfigure}{0.5\textwidth}
+    \includegraphics[scale = 0.15]{Chapter_5/g_code_5.png}
+    \caption{Downloading the generated G-code file to disk}
+    \label{fig:g5}
+    \end{subfigure} 
+    \end{center}
+    
+    \caption{The final steps for G - code generation}
+    \label{fig:g345}
+\end{figure}
 
 \section{CAM processor}
 
