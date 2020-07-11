@@ -1,4 +1,4 @@
-\chapter{Software methodology}
+\chapter{Software methodology} \label{chapter5}
 
 As discussed before in section \ref{Sec:3}, the designers of CNC machines for hobbyists and small scale applications rarely design an integrated software platform i.e. all sequential steps of the software process flow are NOT integrated into a single easy to use platform for the end-user. There could be multiple reasons for doing the same as discussed before. Not having enough knowledge about software development and design could be one of them. The process flow being considerably shorter as compared to what is commonly used in professional and commercial applications could be another. Hence, the sequential steps for the same have been elaborated below.
 
@@ -36,16 +36,16 @@ After checking for any possible faults in the board file regarding traces, routi
 \begin{figure}[h]
     \centering
     \includegraphics[scale = 0.75]{Chapter_5/cam_processor_dialog.png}
-    \caption{A snapshot of the CAM processor dialog box in Eagle}
+    \caption{A snapshot of the CAM processor dialog box in Eagle (Starting from top left to bottom right): The layer for which the Gerber will be generated, the sub layers included, whether to incorporate the shape of the board, file name and location and \textbf{Process Job} button}
     \label{fig:cam_dialog}
 \end{figure}
 
 
-\section{G code generation}
+\section{G code generation} \label{gcodegen}
 
 The next step is to generate the g code corresponding to the Gerber file obtained from the previous step. The software process flow moves online at this stage and hence requires internet access. G-code instruction of a PCB board is generated through the online platform \href{http://copper.carbide3d.com/}{Carbide3D} (\url{http://copper.carbide3d.com/}). It is a free (however, not open-source) software for various CNC jobs and has multiple variants of itself for other specialisations such as woodwork, sheet metal engraving, carving, sculpting etc. \par
 
-As soon as the online application is opened, it asks the user to enter the dimensions of the material in either of the desirable units namely mm and inches and also asks the user the concerned job type (i.e whether the top or bottom of the board is supposed to be traced). Followed by this it asks the user to upload the concerned Gerber file. It should be noted that by virtue of using Eagle software, dedicated Gerber files are obtained for each of the layers i.e. a wrong choice of the job type (top or bottom) won’t affect the final job. The user gets to choose the tool bit that is going to be used as well. \pagebreak
+As soon as the online application is opened, it asks the user to enter the dimensions of the material in either of the desirable units namely mm and inches and also asks the user the concerned job type (i.e whether the top or bottom of the board is supposed to be traced). Followed by this it asks the user to upload the concerned Gerber file. It should be noted that by virtue of using Eagle software, dedicated Gerber files are obtained for each of the layers i.e. a wrong choice of the job type (top or bottom) won’t affect the final job. The user gets to choose the tool bit that is going to be used as well. \par
 
 \begin{figure}[h]
     \begin{subfigure}{0.5\textwidth}
@@ -55,7 +55,7 @@ As soon as the online application is opened, it asks the user to enter the dimen
     \end{subfigure}
     \begin{subfigure}{0.5\textwidth}
     \includegraphics[scale = 0.15]{Chapter_5/g_code_2.png}
-    \caption{Uploading Gerber file from the previous step}
+    \caption{Uploading Gerber file from the previous step (outlined in black)}
     \label{fig:g2}
     \end{subfigure}
     \caption{The first two steps for G-code generation}
@@ -67,18 +67,18 @@ This is followed by asking the specifications regarding the drilling job of the 
 \begin{figure}[h]
     \begin{subfigure}{0.5\textwidth}
     \includegraphics[scale = 0.15]{Chapter_5/g_code_3.png}
-    \caption{Routing and offset based settings}
+    \caption{Routing and offset based settings (outlined in black)}
     \label{fig:g3}
     \end{subfigure}
     \begin{subfigure}{0.5\textwidth}
     \includegraphics[scale = 0.15]{Chapter_5/g_code_4.png}
-    \caption{Options for area rub out and outline cut}
+    \caption{Options for area rub out and outline cut (outlined in black)}
     \label{fig:g4}
     \end{subfigure}  
     \begin{center}
     \begin{subfigure}{0.5\textwidth}
     \includegraphics[scale = 0.15]{Chapter_5/g_code_5.png}
-    \caption{Downloading the generated G-code file to disk}
+    \caption{Downloading the generated G-code file to disk (outlined in black)}
     \label{fig:g5}
     \end{subfigure} 
     \end{center}
@@ -123,7 +123,7 @@ Following this, the G code from the previous step can be directly loaded by choo
 
 \hspace{-13.7mm}
 \textbf{Step 1}: Designing the schematic and the board file in Eagle or any other suitable schematic design software and then exporting the Gerber files from the same. \\[5mm]
-\textbf{Step 2}: Generating G-code corresponding to the Gerber files in \href{http://copper.carbide3d.com/}{Carbide3D} (\url{http://copper.carbide3d.com/}) (*section 5.2*) and downloading the same to the local machine. \\[5mm]
+\textbf{Step 2}: Generating G-code corresponding to the Gerber files in \href{http://copper.carbide3d.com/}{Carbide3D} (\url{http://copper.carbide3d.com/}) (section \ref{gcodegen}) and downloading the same to the local machine. \\[5mm]
 \textbf{Step 3}: Importing generated G-code file from the system into Universal G-code sender software for execution. \\[5mm]
 \textbf{Step 4}: Including the Grbl header file in an Arduino file (.ino) and compiling and uploading the same to the Arduino UNO board. \\[5mm]
 \textbf{Step 5}: Executing the G-code file from Universal G-code sender to instruct the CNC machine to process the job.

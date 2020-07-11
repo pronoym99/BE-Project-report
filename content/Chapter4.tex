@@ -1,6 +1,6 @@
-\chapter{Electronic and driving circuitry}
+\chapter{Electronic and driving circuitry} \label{chapter4}
 
-\section{Power supply}
+\section{Power supply} \label{psupply}
 
 In our project, there are three major electronic components which have different power ratings. We have to power an Arduino UNO board, portable mini electric drill and a CNC shield. The Arduino UNO board are often powered via the USB connection or with an external power supply. The power source is selected automatically. External (non-USB) power can come either from an AC-to-DC adapter or battery. The adapter is often connected by plugging a 2.1mm centre-positive plug into the board's power jack. Leads from a battery are often inserted within the GND and Vin pin headers of the source connector. The board can operate an external supply from 6 to 20 volts. If furnished with but  7V, however, the 5V pin could provide but five volts and therefore the board may become unstable. If using quite 12V, the voltage regulator may overheat and damage the board. The recommended range is 7 to 12 volts. The current requirement ranges from 1A - 3A. \par
 
@@ -37,7 +37,7 @@ However, it should be noted that no customised PSU was developed for this projec
 
 The most important part of this project is the CNC shield and associated motors. Our project consists of three axes (X-axis, Y-axis and Z-axis) which are controlled by two stepper motors (for X and Y axes) and a single servo motor (for vertical movement of drill bit i.e. Z-axis).
 
-\subsection{Stepper motors}
+\subsection{Stepper motors} \label{step_motors}
 
 Both X and Y axes are independently controlled by NEMA 17 stepper motors so we require two stepper motors in this project. The stepper motor assigned for the X-axis segment must be able to rotate a coupled rod, resting on which is the entire Y-axis segment (a part of whose weight is resting on this threaded rod and another smooth support rod). So a large capacity stepper motor needs to be considered. If possible, going for a larger capacity stepper motor (say NEMA 23) for the X-axis would ease out the operations in terms of fast and precise movement. \par
 
@@ -128,7 +128,7 @@ A heat sink is a passive heat exchanger that transfers the heat dissipated from 
 
 In the following subsections, we describe in detail how the hardware interfacing is to be carried out. Apart from that certain calibration steps and standard conventions (in terms of wire colour and selection) have also been discussed at length.
 
-\subsection{Wiring and interfacing}
+\subsection{Wiring and interfacing} \label{winterface}
 
 The basic advantage of having shields for arbitrary applications related to microcontroller-based development is that it reduces the number and density of the wires required for a particular project or system. As stated before we have selected an Arduino UNO and a compatible CNC shield i.e. the Arduino CNC shield V3. Because of this, there are no wired connections between the microcontroller board and the shield and the shield resides perfectly on top of it by getting directly interfaced to the relevant pins. \par
 
@@ -181,9 +181,9 @@ Following page contains the overall circuit of the CNC machine \pagebreak
 \end{figure}
 
 
-\subsection{Motor driver current calibration}
+\subsection{Motor driver current calibration} \label{motor_calib}
 
-For all CNC based applications, motor driver calibration is an important step before the entire system is powered into normal operation. A slight adjustment to the motor driver is required to ensure that it is not over or underpowered. Not over or underpowering is important in order to provide the ideal amount of torque for the extruder to run without skipping steps or overheating and damaging the motor. Before proceeding ahead with the calculations it should be noted that there are two types of motors based on their power and capacity used in many CNC based application or CAD/CAM processing in general. They are:
+For all CNC based applications, motor driver calibration is an important step before the entire system is powered into normal operation. A slight adjustment to the motor driver is required to ensure that it is not over or under powered. Not over or under powering is important in order to provide the ideal amount of torque for the extruder to run without skipping steps or overheating and damaging the motor. Before proceeding ahead with the calculations it should be noted that there are two types of motors based on their power and capacity used in many CNC based application or CAD/CAM processing in general. They are:
 
 \begin{enumerate}
  \item For the compact but powerful motor, the maximum rated current to be set for stepper driver to output is 1.68A (These motors usually constitute the main electric drill used for engraving or drilling purposes).
@@ -244,8 +244,10 @@ One way to line the current limit is to place the driving force into full-step m
         \caption{The points on the driver to be probed encircled in \textcolor{red}{red} and black (left) and multimeter probes of the same colour (right)}
         \label{fig:probes}
        \end{figure}
-
-       A ceramic screwdriver should be used in order to rotate the potentiometer to prevent shorting out any of the components whilst performing the adjustment as shown below.
+       
+       % adjust terms like next page, following etc. if any changes occur %
+       
+       A ceramic screwdriver should be used in order to rotate the potentiometer to prevent shorting out any of the components whilst performing the adjustment as shown on the following page.
 
        \begin{figure}[h]
         \centering
@@ -268,7 +270,7 @@ The contents of this section are optional, however, these are some recommended c
 
 \subsubsection*{Wires related to interfacing between motor and CNC shield}
 
-Motor coil wires are connected to dedicated driver pins on the CNC module. However, as stated in *section 4.6.1* there is no form of annotation on the motors indicating which coil is to be connected to what. Additionally, the wires are not labelled in any form indicating their actual electrical significance with the coils (inductor coils) present inside and their order of magnetisation. So the primary, as well as the proper way of identifying the wires, is their colour. In this project, we are using a pair of bipolar stepper motors which have a total of four leads/wires which are actually connected to the internal winding and can be accessed. Since there is only a single winding per phase, reversing the magnetic pole is relatively complicated as opposed to a unipolar stepper motor. However, that complexity is taken care of by using dedicated motor driver chips. \par
+Motor coil wires are connected to dedicated driver pins on the CNC module. However, as stated in section \ref{winterface} there is no form of annotation on the motors indicating which coil is to be connected to what. Additionally, the wires are not labelled in any form indicating their actual electrical significance with the coils (inductor coils) present inside and their order of magnetisation. So the primary, as well as the proper way of identifying the wires, is their colour. In this project, we are using a pair of bipolar stepper motors which have a total of four leads/wires which are actually connected to the internal winding and can be accessed. Since there is only a single winding per phase, reversing the magnetic pole is relatively complicated as opposed to a unipolar stepper motor. However, that complexity is taken care of by using dedicated motor driver chips. \par
 
 The four leads of the stepper motor are customary to be coloured distinctively. In our project, the stepper motor wires are coloured as Red, Blue, Green and Black. The former two belong to the first coil pair and the latter two belong to the second coil pair. An illustrative figure is shown below with all the motor coils alongside the image of all the wires coming out from a stepper motor.
 
@@ -299,7 +301,7 @@ The exact terminology for the wires and their connection with the dedicated pins
 
 Apart from the wire colour, the length of the wires from stepper motors is also to be taken into account while designing the project. It should be noted that the stepper motor responsible for the movement of the X-axis will be stationery itself. So the four leads/wires from it can be cut to length to just match or exceed its (the motor) distance from the CNC shield. This will ensure proper wire management and avoid inter looping and tangling between the wires in any circumstances. However, at the same time, it should be noted that the stepper motor responsible for the movement of the Y-axis will be mobile. So there is a high chance that they may get tangled amongst themselves and severe the connections between the motor and the CNC shield during actual operation. Therefore it is recommended that they are cut to a length equal to the maximum possible linear displacement of the tooltip in the Y-direction. If the shield is placed at half the maximum possible displacement in either of the axes then wires from both the stepper motors are supposed to be cut to a length just exceeding this value. However, in general, the wires associated with the stepper motor of the Y-axis are supposed to be tauter as well as more flexible as compared to the ones associated with the X-axis. \par
 
-Also apart from the above conventions, thin wires are supposed to be always wrapped in insulating heat shrink material to avoid wear and tear from repeated use cycles. A representative illustration is given below (although they have not been used as of now). \par
+Also apart from the above conventions, thin wires are supposed to be always wrapped in insulating heat shrink material to avoid wear and tear from repeated use cycles. A representative illustration is given on the following page (although they have not been used as of now). \par
 
 \begin{figure}[h]
  \centering
