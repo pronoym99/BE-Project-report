@@ -19,7 +19,7 @@ It is obvious that the net dimensions of the base material would need to be grea
 
 \section{XY axes made up of normal unpolished wood}
 
-The two segments of wood which must have the primary load bearing capacity are the XY axes. The X segment consists of a wooden plank like structure with slots to insert wooden blocks on it (whose dimensions are illustrated below).The motor resides behind one block (say $B_{1}$) while the block on the other end is idle (say $B_{2}$). The face of $B_{1}$ which faces $B_{2}$ has two holes drilled in it. The guide rod connected to the motor shaft is inserted into the larger hole while the support rod is inserted into the smaller hole. The respective dimensions of the hole are clearly mentioned in the diagram and are identical for both $B_{1}$ and $B_{2}$. \par
+The two segments of wood which must have the primary load bearing capacity are the XY axes. The X segment consists of a wooden plank like structure with slots of length $15$ mm and depth $8$ mm each to insert wooden blocks on it. A similar structure exists for Y - axis segment as well. Dimensions for both the segments are illustrated below. \par 
 
 \begin{figure}[h]
     \begin{center}
@@ -31,6 +31,10 @@ The two segments of wood which must have the primary load bearing capacity are t
     \draw [dashed] (0,30) rectangle (8.5,30);
     \hspace{-15mm}
     \dimline [extension start length=0.25, extension end length=0.25, line style = {line width=0.5}]{(0,0)}{(0,40)}{40 cm};
+    \hspace{15mm}
+    \dimline[line style={line width=0.5},extension start length=1,extension end length=1]{(0,42)}{(8.5,42)}{8.5 cm};
+    \dimline[line style={line width=0.5},extension start length=0.3,extension end length=0.3]{(12,40)}{(12,30)}{10 cm};
+    \dimline[line style={line width=0.5},extension start length=0.3,extension end length=0.3]{(12,28.5)}{(12,3.2)}{25.3 cm};
     \end{tikzpicture}    
     \end{center} 
     \begin{center}   
@@ -38,17 +42,50 @@ The two segments of wood which must have the primary load bearing capacity are t
     \draw (0,0) rectangle (40,2.5);
     \draw [dashed] (10,1.7) rectangle (11.5,2.5);
     \draw [dashed] (36.8,1.7) rectangle (38.3,2.5);
+    \dimline[line style={line width=0.5},extension start length=0.07,extension end length=0.07]{(11.5,4)}{(36.8,4)}{25.3 cm};
+    \dimline[line style={line width=0.5},extension start length=-0.05,extension end length=-0.05]{(0,-1.5)}{(40,-1.5)}{40 cm};
     \end{tikzpicture}    
     \end{center}
-    \caption{Drawing showing maximum PCB dimensions that can be manufactured (in \textcolor{blue}{blue}) superimposed on base material dimensions represented on a $1:5$ scale}
+    \caption{(From top to bottom) Top view and front view of the X-axis segment with dimensions represented on a $1:5$ scale}
     \label{fig:xaxis}
+\end{figure} 
+
+Following page shows the structure of the Y - axis segment which has a similar scheme of construction but with slightly reduced dimensions. \pagebreak
+
+\begin{figure}[h]
+    \begin{center}
+    \begin{tikzpicture}[scale=0.2]
+    \draw (0,0) rectangle (8.5,40);
+    \draw [dashed] (0,6.7) rectangle (8.5,8.2);
+    \draw [dashed] (0,30.5) rectangle (8.5,32);
+    \hspace{-15mm}
+    \dimline [extension start length=0.25, extension end length=0.25, line style = {line width=0.5}]{(0,0)}{(0,40)}{40 cm};
+    \hspace{15mm}
+    \dimline[line style={line width=0.5},extension start length=1,extension end length=1]{(0,42)}{(8.5,42)}{8.5 cm};
+    \dimline[line style={line width=0.5},extension start length=0.3,extension end length=0.3]{(12,40)}{(12,32)}{8 cm};
+    \dimline[line style={line width=0.5},extension start length=0.3,extension end length=0.3]{(12,30.5)}{(12,8.2)}{22.3 cm};
+    \end{tikzpicture}    
+    \end{center} 
+    \begin{center}   
+    \begin{tikzpicture}[scale=0.2]
+    \draw (0,0) rectangle (40,2.5);
+    \draw [dashed] (8,1.7) rectangle (9.5,2.5);
+    \draw [dashed] (31.8,1.7) rectangle (33.3,2.5);
+    \dimline[line style={line width=0.5},extension start length=0.07,extension end length=0.07]{(9.5,4)}{(31.8,4)}{22.3 cm};
+    \dimline[line style={line width=0.5},extension start length=-0.05,extension end length=-0.05]{(0,-1.5)}{(40,-1.5)}{40 cm};
+    \end{tikzpicture}    
+    \end{center}
+    \caption{(From top to bottom) Top view and front view of the Y-axis segment with dimensions represented on a $1:5$ scale}
+    \label{fig:yaxis}
 \end{figure}
+
+The motor resides behind one block (say $B_{1}$) while the block on the other end is idle (say $B_{2}$). The face of $B_{1}$ which faces $B_{2}$ has two holes drilled in it. The guide rod connected to the motor shaft is inserted into the larger hole while the support rod is inserted into the smaller hole. The respective dimensions of the hole are clearly mentioned in the diagram and are identical for both $B_{1}$ and $B_{2}$. \par
 
 Additionally as mentioned before dimension buffers are always necessary. The buffer which has been used here (both for $B_{1}$ and $B_{2}$) is: the center of the smaller hole is located at a distance of 1.5 cm from the left end while the center of the larger hole is 3 cm from the right end. The overall buffer which was available at the end for the two blocks were
 (Left buffer $-$ radius of smaller hole) $+$ (Right buffer $-$ radius of larger hole)
 $= (1.5 - 0.6) + (3 - 1.65)
 = 0.9 + 1.35
-= 2.25$ cm
+= 2.25$ cm \par
 
 The block $B_{2}$ as mentioned earlier is idle - the face of the block which does not face $B_{1}$ is fully empty. And the sole purpose of $B_{2}$ is to stabilise other ends of the main guide rod as well as the support rod. This is accomplished by the bearing arrangements made on the face facing the concerned face of $B_{1}$ as mentioned earlier. Details of the bearing design and the means through which they become compatible with the wooden block faces and the concerned guide or support rods are mentioned in the subsequent sections.
 
@@ -84,8 +121,8 @@ One end of the Y-axis (Wooden structure) is rested on top of the X-axis, while t
 
 \begin{figure}[h]
     \centering
-    \includegraphics[scale = 0.5]{Chapter_3/ball_castor.PNG}
-    \caption{A castor wheel with a rubber ball similar to the one used in the project}
+    \includegraphics[scale = 0.2]{Chapter_3/ball_castor.jpeg}
+    \caption{A set of castor wheels with a rubber endings similar to the one used in the project}
     \label{fig:ballcastor}
 \end{figure}
 

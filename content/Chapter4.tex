@@ -41,7 +41,7 @@ The most important part of this project is the CNC shield and associated motors.
 
 Both X and Y axes are independently controlled by NEMA 17 stepper motors so we require two stepper motors in this project. The stepper motor assigned for the X-axis segment must be able to rotate a coupled rod, resting on which is the entire Y-axis segment (a part of whose weight is resting on this threaded rod and another smooth support rod). So a large capacity stepper motor needs to be considered. If possible, going for a larger capacity stepper motor (say NEMA 23) for the X-axis would ease out the operations in terms of fast and precise movement. \par
 
-The stepper motor for the Y-axis segment is relatively less constrained in terms of weight capacity and any suitable capacity motor which can rotate a threaded rod will do. The NEMA 17 stepper motors used for this project are bipolar i.e. there is only a single winding per phase. The driving circuit must be more complicated to reverse the magnetic pole, this is often done to reverse the current in the winding. However, all that complexity is handled by the dedicated drivers onboard the *CNC shield*. Following is an illustration of the motor (identical to the one used in the project) followed by a table of its summarised electrical and mechanical specifications.
+The stepper motor for the Y-axis segment is relatively less constrained in terms of weight capacity and any suitable capacity motor which can rotate a threaded rod will do. The NEMA 17 stepper motors used for this project are bipolar i.e. there is only a single winding per phase. The driving circuit must be more complicated to reverse the magnetic pole, this is often done to reverse the current in the winding. However, all that complexity is handled by the dedicated drivers onboard the CNC shield shown in section \ref{cncs}. Following is an illustration of the motor (identical to the one used in the project) followed by a table of its summarised electrical and mechanical specifications.
 
 \begin{figure}[h]
  \centering
@@ -50,7 +50,33 @@ The stepper motor for the Y-axis segment is relatively less constrained in terms
  \label{fig:stepper}
 \end{figure}
 
-%  table of brief specifications %
+\begin{table}[h]
+\def\arraystretch{1.5}
+    \centering
+    \caption{Table of brief specifications of single length NEMA 17 stepper motor}
+    \begin{tabular}{|c|c|}
+        \hline
+		\multicolumn{2}{|c|}{Mechanical specifications} \\
+		\hline
+		Weight & 210 g \\
+		\hline
+		Holding torque & 23 Ncm \\ 
+		\hline 
+		Detent torque & 1.2 Ncm \\
+		\hline
+		Rotor inertia & 0.038 kgcm$^{2}$ \\
+		\hline
+		\multicolumn{2}{|c|}{Electrical specifications} \\
+		\hline
+	    Phase current & 1.5 A \\
+		\hline
+		Phase resistance &	1.3 $\Omega$ \\
+		\hline
+		Phase inductance & 2.1 mH \\
+		\hline
+    \end{tabular}
+    \label{tab:step_specs}
+\end{table}
 
 
 \subsection{Servo motor}
@@ -65,16 +91,41 @@ The only function of the servo motor of Z-axis is to produce minimal linear actu
  }
 \end{flushleft}
 
-It should be noted that there are many other equivalent instructions which would produce the same linear actuation. Depending on what the *software* determines to be feasible in terms of time and space, the appropriate set of G code(s) would be used at the concerning point in the operation of the CNC machine. Following is an illustration of the motor (identical to the one used in the project) followed by a table of its summarised electrical and mechanical specifications.
+It should be noted that there are many other equivalent instructions which would produce the same linear actuation. Depending on what the software (described in section \ref{gcodegen}) determines to be feasible in terms of time and space, the appropriate set of G code(s) would be used at the concerning point in the operation of the CNC machine. Following is an illustration of the motor (identical to the one used in the project) followed by a table of its summarised electrical and mechanical specifications.
 
 \begin{figure}[h]
  \centering
- \includegraphics[scale=0.4]{Chapter_4/servo.jpg}
+ \includegraphics[scale=0.37]{Chapter_4/servo.jpg}
  \caption{Gear precision servo similar to the one used in the project}
  \label{fig:servo}
-\end{figure}
+\end{figure} 
 
-%  table of brief specifications %
+\begin{table}[h]
+\def\arraystretch{1.5}
+    \centering
+    \caption{Table of brief specification of MG90S metal gear servo motor}
+    \begin{tabular}{|c|c|}
+        \hline
+		\multicolumn{2}{|c|}{Mechanical specifications} \\
+		\hline
+		Weight & 13.4 g \\
+		\hline
+		Dimensions & 22.5 $\times$ 12 $\times$ 35.5 mm \\ 
+		\hline 
+		Stall torque & 1.8 kgf·cm (4.8V ), 2.2 kgf·cm (6 V) \\
+		\hline
+		\multicolumn{2}{|c|}{Electrical specifications} \\
+		\hline
+		Operating speed	& 0.1 s/60$^{\circ}$ (4.8 V), 0.08 s/60$^{\circ}$ (6 V) \\
+		\hline
+		Operating voltage &	4.8 V - 6.0 V \\
+		\hline
+		Dead band width & 5 $\mu$s \\
+		\hline
+    \end{tabular}
+    \label{tab:servo_specs}
+\end{table}
+
 
 \section{Micro controller}
 
@@ -89,9 +140,9 @@ Depending on the above conditions we have used an Arduino UNO which is based on 
  \label{fig:arduino}
 \end{figure}
 
-\section{Motor drivers and CNC shield}
+\section{Motor drivers and CNC shield} \label{cncs}
 
-We have to drive three motors (two stepper motors and a single servo motor), for this, we have used a CNC shield. The CNC Shield V3 for Arduino is an Arduino compatible board that turns your Arduino into a CNC controller. Using an open-source firmware it can control up to 4 Stepper motors using DRV8825 or A4988 stepper motor drivers making it easy to get your CNC projects up and running in a few hours.
+We have to drive three motors (two stepper motors and a single servo motor), for this, we have used a CNC shield. The CNC Shield V3 for Arduino is an Arduino compatible board that turns your Arduino into a CNC controller. Using an open-source firmware it can control up to 4 Stepper motors using DRV8825 or A4988 stepper motor drivers making it easy to get your CNC projects up and running in a few hours. \pagebreak 
 
 \begin{figure}[h]
 
@@ -139,7 +190,7 @@ However, choosing compatible shields has an added disadvantage - the shield comp
  \includegraphics[scale=0.5]{Chapter_4/pin_mapping.png}
  \caption{Pin mapping between the Arduino UNO board and the CNC shield showing the interfacing between the pins from both the modules once they are mounted suitably}
  \label{fig:pin_map}
-\end{figure} \pagebreak
+\end{figure} 
 
 
 Once the CNC shield has been mounted on top of the board we can proceed with attaching the A4988 motor drivers. Now with the reset button (RST) on the top left of the CNC shield (for directional ref.), the pin headers for attaching the motor drivers (in an anti-clockwise sense) are for the X, Y, A and Z axes respectively. Just as seen in the previous case here also we don’t need any separate wires to interface the motor drivers to the shield thereby reducing the number of wires required and the wire interfacing complexity. All three motor drivers are absolutely identical to each other so their choice for the individual axes doesn’t matter. The motor drivers for the X and Y axes are connected to their respective pin headers. These driver chips have extremely small hook-like structures (similar to pins) to attach heat sinks. The heat sinks are to be attached using these structures on to the motor drivers. \par
@@ -154,7 +205,7 @@ After these connections have been carried out the motors as well as a suitable D
 \end{figure}
 
 
-Since the pin names are quite confusing we have provided a table below for the reference of the reader. It contains the equivalent pin names on the CNC shield, the motor driver and the wires from the stepper motor to be connected to the respective pins. \par
+Since the pin names are quite confusing we have provided a table on the following page for the reference of the reader. It contains the equivalent pin names on the CNC shield, the motor driver and the wires from the stepper motor to be connected to the respective pins. \pagebreak
 
 \begin{table}[h]
 \def\arraystretch{1.5}
@@ -222,7 +273,7 @@ One way to line the current limit is to place the driving force into full-step m
 
        \begin{figure}[h]
         \centering
-        \includegraphics[scale=0.4]{Chapter_4/motor_driver_variants.png}
+        \includegraphics[scale=0.28]{Chapter_4/motor_driver_variants.png}
         \caption{Pololu A4988 motor driver variants (resistors circled in \textcolor{yellow}{yellow}) with  $R_{CS} = 0.050\Omega$ (left) and $R_{CS} = 0.068\Omega$ (right)}
         \label{fig:driver_variants}
        \end{figure}
@@ -283,7 +334,7 @@ One way to line the current limit is to place the driving force into full-step m
 
 \subsection{Wire selection on the basis of component interfacing}
 
-The contents of this section are optional, however, these are some recommended conventions and rules which are ought to be followed so as to develop a properly working self-explanatory system. Before proceeding further it should be noted that the CNC module is directly mounted on the Arduino while the motor drivers are directly mounted on the CNC shield. The heat sinks are fixed onto the motor drivers. Any form of wired connection is \textbf{not needed} for these purposes which further emphasises the advantages of using dedicated microcontroller shields for various applications wherein required.
+The contents of this section are optional, however, these are some recommended conventions and rules which are ought to be followed so as to develop a properly working self-explanatory system. Before proceeding further it should be noted that the CNC module is directly mounted on the Arduino while the motor drivers are directly mounted on the CNC shield. The heat sinks are fixed onto the motor drivers. Any form of wired connection is \textbf{not needed} for these purposes which further emphasises the advantages of using dedicated microcontroller shields for various applications wherein required. 
 
 \subsubsection*{Wires for generic interfacing}
 
@@ -316,7 +367,7 @@ The four leads of the stepper motor are customary to be coloured distinctively. 
 
 \end{figure} 
 
-The exact terminology for the wires and their connection with the dedicated pins is better represented in the *table*. \par
+The exact terminology for the wires and their connection with the dedicated pins is better represented in table \ref{tab:mccons}. \par
 
 Apart from the wire colour, the length of the wires from stepper motors is also to be taken into account while designing the project. It should be noted that the stepper motor responsible for the movement of the X-axis will be stationery itself. So the four leads/wires from it can be cut to length to just match or exceed its (the motor) distance from the CNC shield. This will ensure proper wire management and avoid inter looping and tangling between the wires in any circumstances. However, at the same time, it should be noted that the stepper motor responsible for the movement of the Y-axis will be mobile. So there is a high chance that they may get tangled amongst themselves and severe the connections between the motor and the CNC shield during actual operation. Therefore it is recommended that they are cut to a length equal to the maximum possible linear displacement of the tooltip in the Y-direction. If the shield is placed at half the maximum possible displacement in either of the axes then wires from both the stepper motors are supposed to be cut to a length just exceeding this value. However, in general, the wires associated with the stepper motor of the Y-axis are supposed to be tauter as well as more flexible as compared to the ones associated with the X-axis. \par
 
