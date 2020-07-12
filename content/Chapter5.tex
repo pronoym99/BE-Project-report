@@ -95,15 +95,69 @@ To begin with, the Arduino IDE (or whichever relevant text editor is used) is op
 
  {\fontfamily{qcr}\selectfont \#include <grbl.h>}
 
-This includes the Gerber header files into your Arduino project i.e it gives a way to convert standard g code instructions to Arduino understandable commands. For e.g. a single movement of the drill head is converted into a series of digital outputs (PWM signals to be precise) on the pins connected to the CNC shield which are then fed into the motor assembly connected with the shield. Since this header file is usually not an inbuilt file or library in the Arduino IDE it needs to be downloaded from external resources such as the official and updated GitHub repository of \href{https://github.com/gnea/grbl}{grbl} - \url{https://github.com/gnea/grbl}. After extracting the zip archive the bin folder contains a readymade .ino file which can be simply opened and uploaded to the board (the file contains only the above line). After successfully doing so the serial monitor is opened. It is worthwhile to note that the serial monitor, in this case, acts as an excellent CLI for directly interacting with the motors via the CNC shield and via the grbl parser. Following are a few simple commands which can be used in this instance of the serial monitor. \par
+This includes the Gerber header files into your Arduino project i.e it gives a way to convert standard g code instructions to Arduino understandable commands. For e.g. a single movement of the drill head is converted into a series of digital outputs (PWM signals to be precise) on the pins connected to the CNC shield which are then fed into the motor assembly connected with the shield. Since this header file is usually not an inbuilt file or library in the Arduino IDE it needs to be downloaded from external resources such as the official and updated GitHub repository of \href{https://github.com/gnea/grbl}{grbl} - \url{https://github.com/gnea/grbl}. After extracting the zip archive the bin folder contains a readymade .ino file which can be simply opened and uploaded to the board (the file contains only the above line). After successfully doing so the serial monitor is opened. It is worthwhile to note that the serial monitor, in this case, acts as an excellent CLI for directly interacting with the motors via the CNC shield and via the grbl parser. Following are a few simple commands which can be used in this instance of the serial monitor. (There are advanced realtime commands which have been omitted from the following table for the sake of simplicity) \par
+
+\begin{table}[h]
+    \begin{center}
+    \caption{Table of simple grbl commands}
+    \begin{tabular}{|c|l|}
+        \hline
+		\$\$and \$x=val & View and write grbl settings  \\
+		\hline
+		\$\# & View G code parameters \\
+		\hline
+		\$G & View G code parser state \\ 
+		\hline 
+		\$I & View build info  \\
+		\hline
+		\$N &	View startup blocks \\
+		\hline
+		\$Nx = line & Save startup block \\
+		\hline
+		\$C & Check G code mode \\
+		\hline
+		\$X & Kill alarm clock \\
+		\hline
+		\$H & Run homing cycle\\
+		\hline
+		\$J = line & Run jogging motion\\
+		\hline
+		\$RST=\$, \$RST=\#, and \$RST=* & Restore grbl settings and data to defaults\\
+		\hline
+		\$SLP & Enable sleep mode \\
+		\hline
+    \end{tabular}    
+    \end{center}
+    \label{tab:grbl_cmds}
+\end{table}
 
 % ## insert table of simple grbl commands ## %
 
 This concludes the Arduino and grbl setup phase of the CAM processing.
 
-After this basic setup, we can proceed to send the g code files generated in the previous step to the complete CNC assembly. To do so we would be needing a g code sender here, the Universal G code sender will be used (an appropriate version can be downloaded from \url{https://winder.github.io/ugs_website/download/}). Once the software is downloaded and extracted from its archive it is opened. Now, before proceeding onto uploading the obtained G code in the previous step the port and the baud rate should be the same as the one used in the previous phase (port to which the Arduino is connected and the baud rate that was being used for the serial monitor). After this initial setup, the \textbf{connect} icon is pressed (which is located alongside the baud rate selector). If all interfacing has been done properly this will lead to a successful connection between the software and hardware which will be indicated by this icon turning green. If it is not so the user can choose to refresh the ports and the baud rate (this step shall clear any unsent data from each of the COM ports and shall reset the baud rate to a default of 115200). However, it should be noted that the \textit{active} state could still be \textit{ALARM} which can be unlocked by choosing one of the machine actions from Menu bar. \par
+After this basic setup, we can proceed to send the G code files generated in the previous step to the complete CNC assembly. To do so we would be needing a G code sender here, the Universal G code sender will be used (an appropriate version can be downloaded from \url{https://winder.github.io/ugs_website/download/}). Once the software is downloaded and extracted from its archive it is opened. Now, before proceeding onto uploading the obtained G code in the previous step the port and the baud rate should be the same as the one used in the previous phase (port to which the Arduino is connected and the baud rate that was being used for the serial monitor). After this initial setup, the \textbf{connect} icon is pressed (which is located alongside the baud rate selector). If all interfacing has been done properly this will lead to a successful connection between the software and hardware which will be indicated by this icon turning green. If it is not so the user can choose to refresh the ports and the baud rate (this step shall clear any unsent data from each of the COM ports and shall reset the baud rate to a default of 115200). However, it should be noted that the \textit{active} state could still be \textit{ALARM} which can be unlocked by choosing one of the machine actions from Menu bar.
 
-% ## insert table of software states ## %
+\begin{table}[h]
+\def\arraystretch{1.5}
+    \begin{center}
+    \caption{Table of common software states of the CAM processor}
+    \begin{tabular}{|c|l|}
+        \hline
+		OFFLINE & The software is not connected to the CNC setup  \\
+		\hline
+		ONLINE & The software is connected to a CNC setup \\
+		\hline
+		IDLE & The software is connected to a CNC setup but is not currently processing anything \\ 
+		\hline 
+		HOLD &	The software halted in the midst of a successful program execution  \\
+		\hline
+		ALARM &	The software encountered a fatal error and halted \\
+		\hline
+    \end{tabular}    
+    \end{center}
+    \label{tab:soft_states}
+\end{table}
+
 
 Following this, the G code from the previous step can be directly loaded by choosing your file in the \textit{file input} by clicking on the browse button. However, general testing of the motors is always recommended. This software platform is universal in nature as well as feature-rich so it has a custom jog controller (\textit{jog} in the sense small but finite and user-controlled steps). All the connected motors can be rotated in both the directions by clicking on the $\boldsymbol{+}$ and $\boldsymbol{-}$ icons. A single press of this button corresponds to a single input pulse to the respective motors. Multiple presses may be needed to emulate an actual machine movement. All the implicit G code generated while testing the motors can be seen on the console on the bottom right. After some basic testing, the G code in the previous step is loaded and the CNC job is activated by clicking on the \textbf{RUN} button. If all goes well the CNC machine should begin its job immediately as per the commands written in the G code file. The movements of the tooltip could be visualized in 3D by choosing the 3d visualiser window from the Window option in the menu bar. It should be noted that the Grbl being a fully compiled parser for G code it could throw errors at the beginning itself on encountering unsupported commands. These commands could either be unsupported by the current version of the software OR could be machine codes (M codes) which are beyond the capabilities of the CNC machine. To find out or detect such commands the parser simply \textit{reads all the ports} and finds out unavailable port addresses or ports which are not interfaced to any peripheral. After successfully removing all the errors depending on the complexity of the G code the CNC job would run successfully and produce the final engraved/etched PCB design. This concludes the overall software process flow and satisfies the main objective of this project.
 
@@ -113,8 +167,25 @@ Following this, the G code from the previous step can be directly loaded by choo
 
 \begin{figure}[h]
  \centering
- \tikz [every node/.style = draw]
- \graph { foo -> bar -> blub };
+ \begin{tikzpicture}[node distance=2cm]
+ \node (start) [startstop] {Start};
+ \node (sch_software) [process, below of=start] {Schematic creation software};
+ \node (gerber) [io, below of=sch_software] {Gerber file};
+ \node (gcode_gen) [process, below of=gerber] {G code generator};
+ \node (gcode) [io, below of=gcode_gen] {G code file};
+ \node (arduino) [process, below of=gcode] {Arduino hashing and initialisation};
+ \node (cam_proc) [process, below of=arduino] {CAM processor};
+ \node (cnc_job) [io, below of=cam_proc] {CNC job or output};
+ \node (stop) [startstop, below of=cnc_job] {Stop};
+ \draw [arrow] (start) -- (sch_software);
+ \draw [arrow] (sch_software) -- node[anchor=west] {Export gerber files} (gerber);
+ \draw [arrow] (gerber) -- (gcode_gen);
+ \draw [arrow] (gcode_gen) -- (gcode);
+ \draw [arrow] (gcode) -- node[anchor=west] {Download G code to disk} (arduino);
+ \draw [arrow] (arduino) -- node[anchor=west] {Compile and upload G code}(cam_proc);
+ \draw [arrow] (cam_proc) -- (cnc_job);
+ \draw [arrow] (cnc_job) -- (stop);
+ \end{tikzpicture}
  \caption{Overall software process flow represented as a simple flowchart}
  \label{fig:soft_process_flow}
 \end{figure}
@@ -127,3 +198,4 @@ Following this, the G code from the previous step can be directly loaded by choo
 \textbf{Step 3}: Importing generated G-code file from the system into Universal G-code sender software for execution. \\[5mm]
 \textbf{Step 4}: Including the Grbl header file in an Arduino file (.ino) and compiling and uploading the same to the Arduino UNO board. \\[5mm]
 \textbf{Step 5}: Executing the G-code file from Universal G-code sender to instruct the CNC machine to process the job.
+
