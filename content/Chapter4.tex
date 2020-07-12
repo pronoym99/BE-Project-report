@@ -156,7 +156,26 @@ After these connections have been carried out the motors as well as a suitable D
 
 Since the pin names are quite confusing we have provided a table below for the reference of the reader. It contains the equivalent pin names on the CNC shield, the motor driver and the wires from the stepper motor to be connected to the respective pins. \par
 
-% Table of equivalent connections %
+\begin{table}[h]
+\def\arraystretch{1.5}
+    \centering
+    \caption{Table of equivalent motor coil connections}
+    \begin{tabular}{|c|c|c|c|c|}
+        \hline
+		Coil pair &	Wire colour & Terminal Annotation &	CNC Pin names &	Order from Left to Right  \\
+		\hline
+		1 & Black &	D &	2B/B2 &	4 \\
+		\hline
+		1 & \textcolor{green}{Green} &	B &	2A/A2 &	1 \\ 
+		\hline 
+		2 &	\textcolor{red}{Red} & A & 1A/A1 & 3 \\
+		\hline
+		2 &	\textcolor{blue}{Blue} & C & 1B/B1 & 2 \\
+		\hline
+    \end{tabular}
+    \label{tab:mccons}
+\end{table}
+
 
 Interfacing the servo motor (which doesn’t require a driver) to the CNC shield is relatively simple as opposed to interfacing of motors which require the same. The pulse input pin of the servo is interfaced with the \textbf{End stop Z+} pin on the CNC shield (as shown below). The Vcc and the GND pin of the servo motor are interfaced with the 5V and the GND pin on the CNC shield respectively. \par
 
@@ -171,7 +190,7 @@ After successfully interfacing the motors to the Arduino board via the CNC shiel
 
 Once the motor assemblies have been wired up to the controller via the CNC shield then the entire setup is now ready to be powered up. However, we still need to calibrate the motor drivers for optimal performance which has been explained in the following section.
 
-Following page contains the overall circuit of the CNC machine \pagebreak
+Following is the overall circuit of the CNC machine 
 
 \begin{figure}[h]
     \centering

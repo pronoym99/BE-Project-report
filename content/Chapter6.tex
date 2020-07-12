@@ -72,9 +72,9 @@ It should be noted that motors \textbf{should not} be tested until and unless th
 
 \begin{figure}[h]
     \centering
-    \includegraphics[scale = 0.5]{Chapter_6/}
-    \caption{}
-    \label{fig:}
+    \includegraphics[scale = 0.75]{Chapter_6/motor_label.png}
+    \caption{An illustration of how rotation of stepper motors is verified visually using cardboard labels during testing}
+    \label{fig:motorlabel}
 \end{figure}
 
 A similar testing routine was developed for the stepper motors of this CNC machine. It was tested using the CAM processor software’s \textit{jog controller} feature. Using the jog controller gave the designers an ability to provide fine movement to both the stepper motors (in both the directions) as well as coarse movements by long-pressing any of the controller buttons on the software.The working of the motors was successfully tested and their performance was within their nominal design limits.
@@ -107,21 +107,72 @@ For any given project, testing is invaluable. However, the procedures to be foll
 \begin{enumerate}
     \item The CNC machine can only handle single-layer PCBs - As of now (stated multiple times in this report) this CNC machine is capable of milling only single-sided or single-layer PCBs. Therefore, it should not be tested against G-code obtained from multilayer PCBs. To genuinely emulate milling of multilayered PCBs, the tester can generate G-code of individual layers (a feature of all common schematic design software) and test the same on our machine. Following is how a  and  test case looks like.
 
-    % #insert .brd file for a single-layered and multilayered PCB 
+    \begin{figure}[h]
+
+    \begin{subfigure}{0.5\textwidth}
+    \hspace{8mm}
+        \includegraphics[width=0.8\linewidth, height=6cm]{Chapter_6/eagle_single.jpg}
+        \caption{Single layered PCB}
+        \label{fig:slpcb}
+    \end{subfigure}
+    \begin{subfigure}{0.5\textwidth}
+    \hspace{8mm}
+        \includegraphics[width=0.8\linewidth, height=6cm]{Chapter_6/eagle_double.png}
+        \caption{Double layered PCB}
+        \label{fig:dlpcb}
+    \end{subfigure}
+
+    \caption{The two illustrations above represent what could be a good and a bad test case respectively for the first rule}
+    \label{fig:sl_dl_pcb}
+    \end{figure} 
     
     \item The CNC machine doesn’t automatically rectify issues in PCB design - The rules and guidelines for creating a really nice industry-grade PCB are large in number. Every PCB given as an input may not obey the said specifications. There could be faults in corners, tracks, track spaces etc.. These problems (and rectification of the same) is the sole responsibility of the user/tester and it should be noted that the software associated with the CNC machine is not capable of understanding the same. If an inappropriately designed PCB (satisfying the previous rule) is given as an input, an equivalent output would be generated within the design limits of the CNC machine. The software doesn’t include any image processing routines and hence no errors would be rectified automatically. Following is an example of what could be a \textit{good} and \textit{bad} test case in this scenario.
     
-    % #insert good and badly designed PCB images
+    \begin{figure}[h]
+
+    \begin{subfigure}{0.5\textwidth}
+    \hspace{8mm}
+        \includegraphics[width=0.8\linewidth, height=6cm]{Chapter_6/eagle_good_rout.png}
+        \caption{Components with good routing}
+        \label{fig:grout}
+    \end{subfigure}
+    \begin{subfigure}{0.5\textwidth}
+    \hspace{8mm}
+        \includegraphics[width=0.8\linewidth, height=6cm]{Chapter_6/eagle_bad_rout.png}
+        \caption{Components with bad routing}
+        \label{fig:brout}
+    \end{subfigure}
+
+    \caption{The two illustrations above represent what could be a good and a bad test case respectively for the second rule}
+    \label{fig:gbrout}
+    \end{figure}
+    
+    \item G-code containing machine codes - While testing this CNC machine it should be noted that it doesn’t include any advanced machine control functions such as \textit{spindle control}, \textit{coolant ON/OFF}, \textit{tool change} etc. although the CNC shield has ports for the same. However, the generated G-code may very often have machine codes indicating one or multiple of the above operations. It is the responsibility of the tester to ensure that such lines of code are commented OR are removed from the program in their entirety. Additionally, some codes belong to different G-code versions and are not compatible with all machines. Such G-codes \textbf{should be} replaced with suitable alternatives.
     
     \item Placement of the machine on a straight and flat surface - For all testing regimes it should always be ensured that the CNC machine is placed on a straight and flat surface which is (preferably) heavy and stable. Although the machine has a baseboard of large dimensions made using wood, the copper-clad itself could have minor and major aberrations or non-uniformities on its surface. Although procedures like auto levelling and others have been mentioned in the literature review, those features could not be implemented due to time constraints. Hence, ensuring a proper flat surface during testing or normal operation is the sole responsibility of the user. Following are images showing what a \textit{good} and \textit{bad} test case would look like.
 
-   % 	#insert images of proper and improper copper claddings
-   
-   \item G-code containing machine codes - While testing this CNC machine it should be noted that it doesn’t include any advanced machine control functions such as \textit{spindle control}, \textit{coolant ON/OFF}, \textit{tool change} etc. although the CNC shield has ports for the same. However, the generated G-code may very often have machine codes indicating one or multiple of the above operations. It is the responsibility of the tester to ensure that such lines of code are commented OR are removed from the program in their entirety. Additionally, some codes belong to different G-code versions and are not compatible with all machines. Such G-codes \textbf{should be} replaced with suitable alternatives.
+   \begin{figure}[h]
+
+    \begin{subfigure}{0.5\textwidth}
+    \hspace{8mm}
+        \includegraphics[width=0.8\linewidth, height=6cm]{Chapter_6/proper_clad.png}
+        \caption{Clean PCB copper cladding which is straight and flat}
+        \label{fig:pclad}
+    \end{subfigure}
+    \begin{subfigure}{0.5\textwidth}
+    \hspace{8mm}
+        \includegraphics[width=0.8\linewidth, height=6cm]{Chapter_6/improper_clad.png}
+        \caption{An unclean PCB copper cladding which may have micro bends and abrasions on its surface}
+        \label{fig:iclad}
+    \end{subfigure}
+
+    \caption{The two illustrations above represent what could be a good and a bad test case respectively for the fourth rule}
+    \label{fig:piclad}
+    \end{figure} 
 
 \end{enumerate}
 
-These many guidelines, if followed properly are sufficient to carry out proper testing for the CNC machine.
+The above guidelines, if followed properly are sufficient to carry out proper testing for the CNC machine.
 
 \section{Scope for future work}
 
