@@ -1,4 +1,4 @@
-\chapter{Literature review}
+\chapter{Literature review} \label{chapter2}
 
 \section{Review paper 1 - Prototype CNC machine design}
 
@@ -134,7 +134,7 @@ Nowadays, all machining has been converted into OR is exclusively carried out by
 Later the Gerber files generated are sent to “FlatCAM” which is a CAM processing software responsible for generating CNC jobs from Gerber files obtained from any PCB CAD program. It does the additional job of generating corresponding “g codes” for routing purposes and allowing the user to edit the same.
 
 
-\subsection{Special procedures}
+\subsection{Special procedures} \label{spec_proc}
 
 Several challenges arise when designing complex PCB designs; these challenges could range from manufacturing multilayered boards to working on uneven surfaces. The associated software for a given CNC machine and some simple procedures help the users overcome these challenges. Few of those which were discussed in this paper are described below.
 
@@ -173,7 +173,7 @@ With RF circuit PCBs or any PCB, in general, comes the problem of clearing large
  \label{fig:copper_clear}
 \end{figure}
 
-\subsubsection*{Board cutout}
+\subsubsection*{Board cutout} \label{outline_cut}
 
 PCBs need to be cut out from much larger and blank copper claddings, otherwise, we shall incur large material wastage in terms of area and cost. The FlatCAM software allows the user to do so by selecting the board cutout tab after choosing a Gerber file. The desired margin (dimension) is selected which tells how far the cutout boundary is from any element of the Gerber source of the PCB. After this “gaps” can be selected for the cutout in terms of their dimensions and their number. It is always recommended to have gap size twice the diameter of the tooltip. FlatCAM allows two gaps (either on top and bottom OR left and right) or four gaps for a given PCB. Once, this step is complete, just like the previous procedure the geometry for the tool path is generated. A CNC job is created from this geometry just like any other geometry and now the job is ready to be processed.  Hence, this feature allows precise cutting of a PCB from its larger blank cladding once the main CNC job is done.
 
@@ -185,7 +185,7 @@ PCBs need to be cut out from much larger and blank copper claddings, otherwise, 
 \end{figure}
 
 
-\subsection{Computing resolution and accuracy}
+\subsection{Computing resolution and accuracy} \label{res_and_acc}
 A lot of experimentation needs to be carried out to verify the practicality of the CNC machine. A typical experimentation procedure needs to be carried out to find out the wire width and resolution capabilities of the PCB. The next part is computing the resolution for SMT fabrication purposes. Both the techniques have been briefly discussed in the manual.
 
 \subsubsection*{Computing wire width and resolution}
