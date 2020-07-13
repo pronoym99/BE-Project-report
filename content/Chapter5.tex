@@ -132,8 +132,6 @@ This includes the Gerber header files into your Arduino project i.e it gives a w
  \label{tab:grbl_cmds}
 \end{table}
 
-% ## insert table of simple grbl commands ## %
-
 This concludes the Arduino and grbl setup phase of the CAM processing.
 
 After this basic setup, we can proceed to send the G code files generated in the previous step to the complete CNC assembly. To do so we would be needing a G code sender here, the Universal G code sender will be used (an appropriate version can be downloaded from \url{https://winder.github.io/ugs_website/download/}). Once the software is downloaded and extracted from its archive it is opened. Now, before proceeding onto uploading the obtained G code in the previous step the port and the baud rate should be the same as the one used in the previous phase (port to which the Arduino is connected and the baud rate that was being used for the serial monitor). After this initial setup, the \textbf{connect} icon is pressed (which is located alongside the baud rate selector). If all interfacing has been done properly this will lead to a successful connection between the software and hardware which will be indicated by this icon turning green. If it is not so the user can choose to refresh the ports and the baud rate (this step shall clear any unsent data from each of the COM ports and shall reset the baud rate to a default of 115200). However, it should be noted that the \textit{active} state could still be \textit{ALARM} which can be unlocked by choosing one of the machine actions from Menu bar.
@@ -191,7 +189,6 @@ Following this, the G code from the previous step can be directly loaded by choo
  \label{fig:soft_process_flow}
 \end{figure}
 
-% Draw overall software process flow %
 
 \hspace{-13.7mm}
 \textbf{Step 1}: Designing the schematic and the board file in Eagle or any other suitable schematic design software and then exporting the Gerber files from the same. \\[5mm]
