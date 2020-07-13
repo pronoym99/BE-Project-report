@@ -1,10 +1,5 @@
 \documentclass[12pt]{report}
 \usepackage[utf8]{inputenc}
-
-\usepackage[backend = biber,style = numeric]{biblatex}
-\addbibresource{references.bib} %references
-
-% \usepackage{natbib}
 \usepackage{titlesec}
 \usepackage{geometry}
 \usepackage{etoolbox}
@@ -12,11 +7,18 @@
 \usepackage{enumitem}
 \usepackage{amsmath}
 \usepackage{xstring}
-% \usepackage{longtable}
-% \usepackage{booktabs}
 \usepackage{multicol}
 \usepackage{tikz-dimline}
+\usepackage{pdfpages}
 
+% bibliography setup %
+\usepackage[backend = biber,sorting = none]{biblatex}
+\addbibresource{references.bib}
+
+% appendix setup %
+\usepackage{appendix}
+\renewcommand{\appendixtocname}{Datasheets of all components}
+\renewcommand{\appendixpagename}{Datasheets of all components}
 
 % On the spot circuit creation %
 \usepackage[american]{circuitikz}
@@ -88,9 +90,11 @@
 
 \begin{document}
 
-\input{prerequistes}
+
+\includepdf[pages=-]{prerequisites}
 \pagenumbering{roman}
 \input{abstract}
+\setcounter{page}{5}
 
 \renewcommand*\contentsname{Table of Contents}
 \tableofcontents
@@ -107,6 +111,14 @@
 \input{content/Chapter6}
 \input{content/Chapter7}
 
+\newpage
+\input{appendices/appendices}
+
+\newpage
 \printbibliography
+\addcontentsline{toc}{chapter}{Bibliography}
+
+\input{acknowledgements}
+\addcontentsline{toc}{chapter}{Acknowledgements}
 
 \end{document}
