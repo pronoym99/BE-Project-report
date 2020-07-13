@@ -51,31 +51,31 @@ The stepper motor for the Y-axis segment is relatively less constrained in terms
 \end{figure}
 
 \begin{table}[h]
-\def\arraystretch{1.5}
-    \centering
-    \caption{Table of brief specifications of single length NEMA 17 stepper motor}
-    \begin{tabular}{|c|c|}
-        \hline
-		\multicolumn{2}{|c|}{Mechanical specifications} \\
-		\hline
-		Weight & 210 g \\
-		\hline
-		Holding torque & 23 Ncm \\ 
-		\hline 
-		Detent torque & 1.2 Ncm \\
-		\hline
-		Rotor inertia & 0.038 kgcm$^{2}$ \\
-		\hline
-		\multicolumn{2}{|c|}{Electrical specifications} \\
-		\hline
-	    Phase current & 1.5 A \\
-		\hline
-		Phase resistance &	1.3 $\Omega$ \\
-		\hline
-		Phase inductance & 2.1 mH \\
-		\hline
-    \end{tabular}
-    \label{tab:step_specs}
+ \def\arraystretch{1.5}
+ \centering
+ \caption{Table of brief specifications of single length NEMA 17 stepper motor}
+ \begin{tabular}{|c|c|}
+  \hline
+  \multicolumn{2}{|c|}{Mechanical specifications} \\
+  \hline
+  Weight           & 210 g                        \\
+  \hline
+  Holding torque   & 23 Ncm                       \\
+  \hline
+  Detent torque    & 1.2 Ncm                      \\
+  \hline
+  Rotor inertia    & 0.038 kgcm$^{2}$             \\
+  \hline
+  \multicolumn{2}{|c|}{Electrical specifications} \\
+  \hline
+  Phase current    & 1.5 A                        \\
+  \hline
+  Phase resistance & 1.3 $\Omega$                 \\
+  \hline
+  Phase inductance & 2.1 mH                       \\
+  \hline
+ \end{tabular}
+ \label{tab:step_specs}
 \end{table}
 
 
@@ -98,32 +98,32 @@ It should be noted that there are many other equivalent instructions which would
  \includegraphics[scale=0.37]{Chapter_4/servo.jpg}
  \caption{Gear precision servo similar to the one used in the project}
  \label{fig:servo}
-\end{figure} 
+\end{figure}
 
 \begin{table}[h]
-\def\arraystretch{1.5}
-    \centering
-    \caption{Table of brief specification of MG90S metal gear servo motor}
-    \begin{tabular}{|c|c|}
-        \hline
-		\multicolumn{2}{|c|}{Mechanical specifications} \\
-		\hline
-		Weight & 13.4 g \\
-		\hline
-		Dimensions & 22.5 $\times$ 12 $\times$ 35.5 mm \\ 
-		\hline 
-		Stall torque & 1.8 kgf·cm (4.8V ), 2.2 kgf·cm (6 V) \\
-		\hline
-		\multicolumn{2}{|c|}{Electrical specifications} \\
-		\hline
-		Operating speed	& 0.1 s/60$^{\circ}$ (4.8 V), 0.08 s/60$^{\circ}$ (6 V) \\
-		\hline
-		Operating voltage &	4.8 V - 6.0 V \\
-		\hline
-		Dead band width & 5 $\mu$s \\
-		\hline
-    \end{tabular}
-    \label{tab:servo_specs}
+ \def\arraystretch{1.5}
+ \centering
+ \caption{Table of brief specification of MG90S metal gear servo motor}
+ \begin{tabular}{|c|c|}
+  \hline
+  \multicolumn{2}{|c|}{Mechanical specifications}                           \\
+  \hline
+  Weight            & 13.4 g                                                \\
+  \hline
+  Dimensions        & 22.5 $\times$ 12 $\times$ 35.5 mm                     \\
+  \hline
+  Stall torque      & 1.8 kgf·cm (4.8V ), 2.2 kgf·cm (6 V)                  \\
+  \hline
+  \multicolumn{2}{|c|}{Electrical specifications}                           \\
+  \hline
+  Operating speed   & 0.1 s/60$^{\circ}$ (4.8 V), 0.08 s/60$^{\circ}$ (6 V) \\
+  \hline
+  Operating voltage & 4.8 V - 6.0 V                                         \\
+  \hline
+  Dead band width   & 5 $\mu$s                                              \\
+  \hline
+ \end{tabular}
+ \label{tab:servo_specs}
 \end{table}
 
 
@@ -142,7 +142,7 @@ Depending on the above conditions we have used an Arduino UNO which is based on 
 
 \section{Motor drivers and CNC shield} \label{cncs}
 
-We have to drive three motors (two stepper motors and a single servo motor), for this, we have used a CNC shield. The CNC Shield V3 for Arduino is an Arduino compatible board that turns your Arduino into a CNC controller. Using an open-source firmware it can control up to 4 Stepper motors using DRV8825 or A4988 stepper motor drivers making it easy to get your CNC projects up and running in a few hours. \pagebreak 
+We have to drive three motors (two stepper motors and a single servo motor), for this, we have used a CNC shield. The CNC Shield V3 for Arduino is an Arduino compatible board that turns your Arduino into a CNC controller. Using an open-source firmware it can control up to 4 Stepper motors using DRV8825 or A4988 stepper motor drivers making it easy to get your CNC projects up and running in a few hours. \pagebreak
 
 \begin{figure}[h]
 
@@ -190,7 +190,7 @@ However, choosing compatible shields has an added disadvantage - the shield comp
  \includegraphics[scale=0.5]{Chapter_4/pin_mapping.png}
  \caption{Pin mapping between the Arduino UNO board and the CNC shield showing the interfacing between the pins from both the modules once they are mounted suitably}
  \label{fig:pin_map}
-\end{figure} 
+\end{figure}
 
 
 Once the CNC shield has been mounted on top of the board we can proceed with attaching the A4988 motor drivers. Now with the reset button (RST) on the top left of the CNC shield (for directional ref.), the pin headers for attaching the motor drivers (in an anti-clockwise sense) are for the X, Y, A and Z axes respectively. Just as seen in the previous case here also we don’t need any separate wires to interface the motor drivers to the shield thereby reducing the number of wires required and the wire interfacing complexity. All three motor drivers are absolutely identical to each other so their choice for the individual axes doesn’t matter. The motor drivers for the X and Y axes are connected to their respective pin headers. These driver chips have extremely small hook-like structures (similar to pins) to attach heat sinks. The heat sinks are to be attached using these structures on to the motor drivers. \par
@@ -208,23 +208,23 @@ After these connections have been carried out the motors as well as a suitable D
 Since the pin names are quite confusing we have provided a table on the following page for the reference of the reader. It contains the equivalent pin names on the CNC shield, the motor driver and the wires from the stepper motor to be connected to the respective pins. \pagebreak
 
 \begin{table}[h]
-\def\arraystretch{1.5}
-    \centering
-    \caption{Table of equivalent motor coil connections}
-    \begin{tabular}{|c|c|c|c|c|}
-        \hline
-		Coil pair &	Wire colour & Terminal Annotation &	CNC Pin names &	Order from Left to Right  \\
-		\hline
-		1 & Black &	D &	2B/B2 &	4 \\
-		\hline
-		1 & \textcolor{green}{Green} &	B &	2A/A2 &	1 \\ 
-		\hline 
-		2 &	\textcolor{red}{Red} & A & 1A/A1 & 3 \\
-		\hline
-		2 &	\textcolor{blue}{Blue} & C & 1B/B1 & 2 \\
-		\hline
-    \end{tabular}
-    \label{tab:mccons}
+ \def\arraystretch{1.5}
+ \centering
+ \caption{Table of equivalent motor coil connections}
+ \begin{tabular}{|c|c|c|c|c|}
+  \hline
+  Coil pair & Wire colour              & Terminal Annotation & CNC Pin names & Order from Left to Right \\
+  \hline
+  1         & Black                    & D                   & 2B/B2         & 4                        \\
+  \hline
+  1         & \textcolor{green}{Green} & B                   & 2A/A2         & 1                        \\
+  \hline
+  2         & \textcolor{red}{Red}     & A                   & 1A/A1         & 3                        \\
+  \hline
+  2         & \textcolor{blue}{Blue}   & C                   & 1B/B1         & 2                        \\
+  \hline
+ \end{tabular}
+ \label{tab:mccons}
 \end{table}
 
 
@@ -241,13 +241,13 @@ After successfully interfacing the motors to the Arduino board via the CNC shiel
 
 Once the motor assemblies have been wired up to the controller via the CNC shield then the entire setup is now ready to be powered up. However, we still need to calibrate the motor drivers for optimal performance which has been explained in the following section.
 
-Following is the overall circuit of the CNC machine 
+Following is the overall circuit of the CNC machine
 
 \begin{figure}[h]
-    \centering
-    \includegraphics[scale=0.7]{Chapter_4/electronic_circuit.png}
-    \caption{Complete electronic circuit for the CNC machine with various motors labelled along with their corresponding axes}
-    \label{fig:electronic_circuit}
+ \centering
+ \includegraphics[scale=0.7]{Chapter_4/electronic_circuit.png}
+ \caption{Complete electronic circuit for the CNC machine with various motors labelled along with their corresponding axes}
+ \label{fig:electronic_circuit}
 \end{figure}
 
 
@@ -297,7 +297,7 @@ One way to line the current limit is to place the driving force into full-step m
        \end{figure}
 
 
- \item Now the red and black probes of the multimeter are connected to the potentiometer and the ground pin of the motor driver respectively as shown below. 
+ \item Now the red and black probes of the multimeter are connected to the potentiometer and the ground pin of the motor driver respectively as shown below.
 
        \begin{figure}[h]
         \hspace{20mm}
@@ -314,9 +314,9 @@ One way to line the current limit is to place the driving force into full-step m
         \caption{The points on the driver to be probed encircled in \textcolor{red}{red} and black (left) and multimeter probes of the same colour (right)}
         \label{fig:probes}
        \end{figure}
-       
+
        % adjust terms like next page, following etc. if any changes occur %
-       
+
        A ceramic screwdriver should be used in order to rotate the potentiometer to prevent shorting out any of the components whilst performing the adjustment as shown on the following page.
 
        \begin{figure}[h]
@@ -334,7 +334,7 @@ One way to line the current limit is to place the driving force into full-step m
 
 \subsection{Wire selection on the basis of component interfacing}
 
-The contents of this section are optional, however, these are some recommended conventions and rules which are ought to be followed so as to develop a properly working self-explanatory system. Before proceeding further it should be noted that the CNC module is directly mounted on the Arduino while the motor drivers are directly mounted on the CNC shield. The heat sinks are fixed onto the motor drivers. Any form of wired connection is \textbf{not needed} for these purposes which further emphasises the advantages of using dedicated microcontroller shields for various applications wherein required. 
+The contents of this section are optional, however, these are some recommended conventions and rules which are ought to be followed so as to develop a properly working self-explanatory system. Before proceeding further it should be noted that the CNC module is directly mounted on the Arduino while the motor drivers are directly mounted on the CNC shield. The heat sinks are fixed onto the motor drivers. Any form of wired connection is \textbf{not needed} for these purposes which further emphasises the advantages of using dedicated microcontroller shields for various applications wherein required.
 
 \subsubsection*{Wires for generic interfacing}
 
@@ -365,7 +365,7 @@ The four leads of the stepper motor are customary to be coloured distinctively. 
  \caption{Illustration representing the coils of a stepper motor and their equivalent coloured annotation}
  \label{fig:coil_representation}
 
-\end{figure} 
+\end{figure}
 
 The exact terminology for the wires and their connection with the dedicated pins is better represented in table \ref{tab:mccons}. \par
 
@@ -391,4 +391,3 @@ The AC/DC adapter for the portable electric drill should be long if possible or 
 Similarly, single-stranded wires should suffice for the power connection of the CNC shield but should be properly insulated with heat shrink tubing after the pair of ends are screwed tightly into the input DC jack of the CNC shield. Even better, double-stranded wires could be used for this purpose eliminating the need for insulating tubing. \par
 
 A USB Type-A to Type-B cable is required to interface an Arduino with a programming device. Both the ends should be equally tight which would prevent probable loss of connection during the phase of flashing a program onto the controller. This would handle both the power supply and programming requirements of the microcontroller development board. If the power supply is to be provided by means of the onboard DC jack then it should be ensured that the input side fits snugly into the jack.
-
