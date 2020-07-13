@@ -89,7 +89,7 @@ This is followed by asking the specifications regarding the drilling job of the 
 
 \section{CAM processor}
 
-The final section of the software flow is responsible for sending the obtained G code to the CNC machine which is understandable by the same. To do so the software must be able to recognise the port to which the Arduino board (together with which the CNC shield is connected). There would be two sets of software required for this step i.e. the Arduino compiler (along with the IDE if possible) and the Universal G code sender for the concerned OS platform. \par
+The final section \cite{online_tutorial} of the software flow is responsible for sending the obtained G code to the CNC machine which is understandable by the same. To do so the software must be able to recognise the port to which the Arduino board (together with which the CNC shield is connected). There would be two sets of software required for this step i.e. the Arduino compiler (along with the IDE if possible) and the Universal G code sender for the concerned OS platform. \par
 
 To begin with, the Arduino IDE (or whichever relevant text editor is used) is opened up and only a single line of program code is compiled which is given below.
 
@@ -97,7 +97,9 @@ To begin with, the Arduino IDE (or whichever relevant text editor is used) is op
 
 This includes the Gerber header files into your Arduino project i.e it gives a way to convert standard g code instructions to Arduino understandable commands. For e.g. a single movement of the drill head is converted into a series of digital outputs (PWM signals to be precise) on the pins connected to the CNC shield which are then fed into the motor assembly connected with the shield. Since this header file is usually not an inbuilt file or library in the Arduino IDE it needs to be downloaded from external resources such as the official and updated GitHub repository of \href{https://github.com/gnea/grbl}{grbl} - \url{https://github.com/gnea/grbl}. After extracting the zip archive the bin folder contains a readymade .ino file which can be simply opened and uploaded to the board (the file contains only the above line). After successfully doing so the serial monitor is opened. It is worthwhile to note that the serial monitor, in this case, acts as an excellent CLI for directly interacting with the motors via the CNC shield and via the grbl parser. Following are a few simple commands which can be used in this instance of the serial monitor. (There are advanced realtime commands which have been omitted from the following table for the sake of simplicity) \par
 
+
 \begin{table}[h]
+<<<<<<< HEAD
  \begin{center}
   \caption{Table of simple grbl commands}
   \begin{tabular}{|c|l|}
@@ -129,6 +131,39 @@ This includes the Gerber header files into your Arduino project i.e it gives a w
   \end{tabular}
  \end{center}
  \label{tab:grbl_cmds}
+=======
+    \begin{center}
+    \caption{Table of simple grbl commands \cite{online_cmd}}
+    \begin{tabular}{|c|l|}
+        \hline
+		{\fontfamily{qcr}\selectfont \$\$}and {\fontfamily{qcr}\selectfont \$x=val} & View and write grbl settings  \\
+		\hline
+	    {\fontfamily{qcr}\selectfont \$\#} & View G code parameters \\
+		\hline
+		{\fontfamily{qcr}\selectfont \$G} & View G code parser state \\ 
+		\hline 
+		{\fontfamily{qcr}\selectfont \$I} & View build info  \\
+		\hline
+		{\fontfamily{qcr}\selectfont \$N} &	View startup blocks \\
+		\hline
+		{\fontfamily{qcr}\selectfont \$Nx = line} & Save startup block \\
+		\hline
+		{\fontfamily{qcr}\selectfont \$C} & Check G code mode \\
+		\hline
+		{\fontfamily{qcr}\selectfont \$X} & Kill alarm clock \\
+		\hline
+		{\fontfamily{qcr}\selectfont \$H} & Run homing cycle\\
+		\hline
+		{\fontfamily{qcr}\selectfont \$J = line} & Run jogging motion\\
+		\hline
+		{\fontfamily{qcr}\selectfont \$RST=\$}, {\fontfamily{qcr}\selectfont \$RST=\#} and {\fontfamily{qcr}\selectfont \$RST=*} & Restore grbl settings and data to defaults\\
+		\hline
+		{\fontfamily{qcr}\selectfont \$SLP} & Enable sleep mode \\
+		\hline
+    \end{tabular}    
+    \end{center}
+    \label{tab:grbl_cmds}
+>>>>>>> 3b53781c1434123bda98f9fb30c4f93a555d3c80
 \end{table}
 
 % ## insert table of simple grbl commands ## %
