@@ -42,14 +42,14 @@
 \hypersetup{colorlinks=true, linkcolor=black, urlcolor=blue}
 
 
-%% caption layout for tables and images %%
+% caption layout for tables and images %
 \usepackage{caption}
 \usepackage{subcaption}
 \captionsetup[table]{skip=7pt}
 \captionsetup[figure]{skip=7pt}
 
 
-%% page layout %%
+% page layout %
 \makeatletter
 \patchcmd{\@makechapterhead}{50\p@}{75mm}{}{}
 \patchcmd{\@makeschapterhead}{50\p@}{75mm}{}{}
@@ -61,12 +61,11 @@
 \footskip = 7mm
 
 
-%% Paragraph and line spacing %%
+% Paragraph and line spacing %
 \setlength{\parindent}{12mm}
 \setlength{\parskip}{2.5mm}
-% \renewcommand{\baselinestretch}{1.5}
 
-%% title formatting %%
+% title formatting %
 \titleformat{\chapter}[block]{\bfseries\Huge\bfshape}{Chapter \ \thechapter}{0.5ex}
 {
     \rule{\textwidth}{0pt}
@@ -76,15 +75,15 @@
 \titlespacing{\thechapter}{0mm}{12mm}{12mm}
 
 
-%% Section formatting %%
+% Section formatting %
 \titleformat{\section}[hang]{\fontsize{16}{16}\bfseries}{ \thesection}{1.4em}{}
 \titlespacing{\thesection}{}{15mm}{15mm}
 
-%% Subsection formatting %%
+% Subsection formatting %
 \titleformat{\subsection}[hang]{\fontsize{14}{14}\bfseries}{ \thesubsection}{1.4em}{}
 \titlespacing{\thesubsection}{}{15mm}{15mm}
 
-%% First level ordered list %%
+% First level ordered list %
 \setlist[enumerate,1]{label=(\alph*)}
 
 
