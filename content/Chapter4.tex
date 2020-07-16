@@ -2,30 +2,17 @@
 
 \section{Power supply} \label{psupply}
 
-In our project, there are three major electronic components which have different power ratings. We have to power an Arduino UNO board, portable mini electric drill and a CNC shield. The Arduino UNO board are often powered via the USB connection or with an external power supply. The power source is selected automatically. External (non-USB) power can come either from an AC-to-DC adapter or battery. The adapter is often connected by plugging a 2.1mm centre-positive plug into the board's power jack. Leads from a battery are often inserted within the GND and Vin pin headers of the source connector. The board can operate an external supply from 6 to 20 volts. If furnished with but  7V, however, the 5V pin could provide but five volts and therefore the board may become unstable. If using quite 12V, the voltage regulator may overheat and damage the board. The recommended range is 7 to 12 volts. The current requirement ranges from 1A - 3A. \par
+In our project, there are three major electronic components which have different power ratings. We have to power an Arduino UNO board, portable mini electric drill and a CNC shield. The Arduino UNO board  \cite{arduino_ref} is often powered via the USB connection or with an external power supply. The power source is selected automatically. External (non-USB) power can come either from an AC-to-DC adapter or battery. The adapter is often connected by plugging a 2.1mm centre-positive plug into the board's power jack. Leads from a battery are often inserted within the GND and Vin pin headers of the source connector. The board can operate on an external supply from 6 to 20 volts. If furnished with 7V, however, the 5V pin could provide but five volts and therefore the board may become unstable. If using quite 12V, the voltage regulator may overheat and damage the board. The recommended range is 7 to 12 volts. The current requirement ranges from 1A - 3A. \par
 
 On the other hand, the electric drill comes in with an attached AC/DC adapter which has an output rating of 9V/1A and is sufficient to rotate the drill bit at nominal speeds. The drill also has manual control for the drill speed (in rpm) which internally adjusts a potentiometer to get the required speed. Similarly, the CNC shield has a rated voltage requirement of 12 - 36 VDC. Now, the problem is to come up with a single (if possible, customised) Power Supply Unit (PSU) which can handle all the devices at once. The 9V rated AC/DC adapter in the electric drill is sufficient to power the Arduino UNO board although it is not even barely sufficient to power the CNC shield (let alone after the current calibration process). At the same time, the current rating of the drill is unknown. Assuming the current rating is in the neighbourhood of 1A (same as the output of the complementary adapter) then splitting its output wires won’t help because the Arduino board won’t receive the expected current for its stable or nominal operation (even if we assume it works in the neighbourhood of the lower bound of the range 1A-3A). These conditions imply that developing a customised PSU for the entire system is very difficult. Even if we use an AC/DC adapter which has a voltage rating of 9V - 12V and a current rating of 1A - 5A with separated output lines it would simply manage to power the Arduino UNO and the electric drill but not the CNC shield. It implies that an adapter having a voltage rating somewhere near 24V will suffice but separate resistors would need to be used (preferably in a voltage divider network) to provide reduced voltage supply to the Arduino UNO board. \par
 
 However, it should be noted that no customised PSU was developed for this project nor were these two electronic components powered by the same unit. The Arduino UNO development board was powered via the USB connection from a laptop while the drill was used along with its complementary AC/DC adapter without any modifications. The CNC shield, on the other hand, was directly powered from a DC regulated power supply.
 
 \begin{figure}[h]
-
- \begin{subfigure}{0.5\textwidth}
-  \hspace{5mm}
-  \includegraphics[width=0.8\linewidth, height=6cm]{Chapter_4/dual_dc_regulated_power_supply.jpg}
-  \caption{Dual DC regulated power supply rated at 30V/2A for powering the CNC shield}
-  \label{fig:dc_supply}
- \end{subfigure}
- \hspace{5mm}
- \begin{subfigure}{0.5\textwidth}
- \hspace{7mm}
-  \includegraphics[width=0.8\linewidth, height=6cm]{Chapter_4/arduino_power.png}
-  \caption{The Arduino UNO board being powered by USB supply from a laptop}
-  \label{fig:arduino_supply}
- \end{subfigure}
-
- \caption{Various distinct power supplies used in the project (excluding the AC-DC adapter for the electric drill)}
- \label{fig:power_supplies}
+\centering
+ \includegraphics[scale=0.5]{Chapter_4/arduino_power.png}
+ \caption{The Arduino UNO board being powered by USB supply from a laptop (the other power supplies have not been shown for the sake of convenience)}
+ \label{fig:arduino_supply}
 \end{figure}
 
 \section{CNC motors}
@@ -124,7 +111,7 @@ It should be noted that there are many other equivalent instructions which would
 
 \section{Micro controller}
 
-The use of a microcontroller for this specific project is to read the G codes and M-codes and interpret it into corresponding pulses to run the motors. Thus the microcontroller to be used can be of basic specifications. However, it should be noted that the CNC shield should be compatible with the microcontroller development board being used. At the same time, the total cost of the board and the shield shouldn’t exceed the budgetary requirements of the project. \par
+The use of a microcontroller \cite{arduino_ref} for this specific project is to read the G codes and M-codes and interpret it into corresponding pulses to run the motors. Thus the microcontroller to be used can be of basic specifications. However, it should be noted that the CNC shield should be compatible with the microcontroller development board being used. At the same time, the total cost of the board and the shield shouldn’t exceed the budgetary requirements of the project. \par
 
 Depending on the above conditions we have used an Arduino UNO which is based on ATmega328 microcontroller. A compatible shield for this board is also available in the market. It has 14 digital I/O pins(out of which 6 can be used as PWM outputs and hence major significance in this project), 6 analog inputs and a 16 MHz ceramic resonator (CSTCE16M0V53-R0), a USB connection, an influence(power) jack, an ICSP header, and a reset button. It basically contains everything needed to support a microcontroller, we just simply have to connect it to a computer (or any other programming device having sufficient capabilities and relevant programming software onboard) with a USB cable.
 
