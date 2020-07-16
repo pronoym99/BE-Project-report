@@ -9,27 +9,27 @@ On the other hand, the electric drill comes in with an attached AC/DC adapter wh
 However, it should be noted that no customised PSU was developed for this project nor were these two electronic components powered by the same unit. The Arduino UNO development board was powered via the USB connection from a laptop while the drill was used along with its complementary AC/DC adapter without any modifications. The CNC shield, on the other hand, was directly powered from a DC regulated power supply.
 
 \begin{figure}[h]
- \begin{center}
-  \begin{subfigure}{0.5\textwidth}
-   \includegraphics[width=\linewidth, height=6cm]{Chapter_4/dual_dc_regulated_power_supply.jpg}
-   \caption{Dual DC regulated power supply rated at 30V/2A for powering the CNC shield}
-   \label{fig:dc_supply}
-  \end{subfigure} \\
- \end{center}
+%  \begin{center}
+%   \begin{subfigure}{0.5\textwidth}
+%   \includegraphics[width=\linewidth, height=6cm]{Chapter_4/dual_dc_regulated_power_supply.jpg}
+%   \caption{Dual DC regulated power supply rated at 30V/2A for powering the CNC shield}
+%   \label{fig:dc_supply}
+%   \end{subfigure} \\
+%  \end{center}
 
  \begin{subfigure}{0.5\textwidth}
   \hspace{5mm}
+  \includegraphics[width=0.9\linewidth, height=6cm]{Chapter_4/dual_dc_regulated_power_supply.jpg}
+  \caption{Dual DC regulated power supply rated at 30V/2A for powering the CNC shield}
+  \label{fig:dc_supply}
+ \end{subfigure}
+ \begin{subfigure}{0.5\textwidth}
   \includegraphics[width=0.9\linewidth, height=6cm]{Chapter_4/arduino_power.png}
   \caption{The Arduino UNO board being powered by USB supply from a laptop}
   \label{fig:arduino_supply}
  \end{subfigure}
- \begin{subfigure}{0.5\textwidth}
-  \includegraphics[width=0.9\linewidth, height=6cm]{Chapter_4/adapter.jpg}
-  \caption{An AC-DC adapter rated at 9V/1A used for powering the electric drill}
-  \label{fig:ac_dc_adapter}
- \end{subfigure}
 
- \caption{Various distinct power supplies used in the project}
+ \caption{Various distinct power supplies used in the project (excluding the AC-DC adapter for the electric drill)}
  \label{fig:power_supplies}
 \end{figure}
 
@@ -142,7 +142,7 @@ Depending on the above conditions we have used an Arduino UNO which is based on 
 
 \section{Motor drivers and CNC shield} \label{cncs}
 
-We have to drive three motors (two stepper motors and a single servo motor), for this, we have used a CNC shield. The CNC Shield V3 for Arduino is an Arduino compatible board that turns your Arduino into a CNC controller. Using an open-source firmware it can control up to 4 Stepper motors using DRV8825 or A4988 stepper motor drivers making it easy to get your CNC projects up and running in a few hours. \pagebreak
+We have to drive three motors (two stepper motors and a single servo motor), for this, we have used a CNC shield. The CNC Shield V3 for Arduino is an Arduino compatible board that turns your Arduino into a CNC controller. Using an open-source firmware it can control up to 4 Stepper motors using DRV8825 or A4988 stepper motor drivers making it easy to get your CNC projects up and running in a few hours. 
 
 \begin{figure}[h]
 
@@ -245,7 +245,7 @@ Following is the overall circuit of the CNC machine
 
 \begin{figure}[h]
  \centering
- \includegraphics[scale=0.7]{Chapter_4/electronic_circuit.png}
+ \includegraphics[scale=0.455]{Chapter_4/electronic_circuit.png}
  \caption{Complete electronic circuit for the CNC machine with various motors labelled along with their corresponding axes}
  \label{fig:electronic_circuit}
 \end{figure}
