@@ -11,6 +11,7 @@
 \usepackage{tikz-dimline}
 \usepackage{pdfpages}
 
+
 % bibliography setup %
 \usepackage[backend = biber,sorting = none]{biblatex}
 \addbibresource{references.bib}
@@ -65,6 +66,7 @@
 \setlength{\parindent}{12mm}
 \setlength{\parskip}{2.5mm}
 
+
 % title formatting %
 \titleformat{\chapter}[block]{\bfseries\Huge\bfshape}{Chapter \ \thechapter}{0.5ex}
 {
@@ -90,10 +92,10 @@
 \begin{document}
 
 
-\includepdf[pages=-]{prerequisites}
+\includepdf[pages=-]{title_page}
 \pagenumbering{roman}
 \input{abstract}
-\setcounter{page}{5}
+\setcounter{page}{4}
 
 \renewcommand*\contentsname{Table of Contents}
 \tableofcontents
